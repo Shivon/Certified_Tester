@@ -6,14 +6,14 @@
 5. [Branch Coverage](#branch-coverage)
 6. [Condition Coverage](#condition-coverage)
 
-# Software Qualität
+## Software Qualität
 
-# Unit-Test
+## Unit-Test
 
-# Stress-Test
+## Stress-Test
 
-# Explorativer Test
+## Explorativer Test
 
-# Branch Coverage
+## Branch Coverage
 
-# Condition Coverage
+## Condition Coverage
