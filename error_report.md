@@ -1,11 +1,11 @@
-#### SoSe-16    WP Certified Tester	  Prof. Dr. Bettina Buth
+##### SoSe-16    WP Certified Tester	  Prof. Dr. Bettina Buth
 
-# Projekt Calculator – Problemreports Intuitiver Test
+## Projekt Calculator – Problemreports Intuitiver Test
 
 Team: Jana Wengenroth, Malte Scheller, Marjan Bachtiari    
 Datum: 22.03.2016    
 
-## Gefundene Probleme
+### Gefundene Probleme
 | Fehlerfund                          |                                         |
 |-------------------------------------|-----------------------------------------|
 | Problemreport                       | PR-Calc-1                               |
