@@ -25,7 +25,7 @@ Datum: 22.03.2016
 | Datum                               | 2016-03-22                              |
 | Gefunden durch wen                  | Team                                    |
 | Gefunden durch Test                 | √ angeklickt                            |
-| Beschreibung des Fehlerverhaltens   | Wurzelfunktion nicht verfügbar, Button geht nicht |
+| Beschreibung des Fehlerverhaltens   | Button geht nicht                       |
 | Vermutete Fehlerursache             | Keine Funktion hinterlegt |
 | Vorschlag zur Fehlerbehebung        | Funktion hinterlegen                    |
 | Status                              | Offen                                   |
@@ -100,22 +100,90 @@ Datum: 22.03.2016
 
 | Fehlerfund                          |                                         |
 |-------------------------------------|-----------------------------------------|
-| Problemreport                       | PR-Calc-1                               |
+| Problemreport                       | PR-Calc-9                               |
 | Datum                               | 2016-03-22                              |
 | Gefunden durch wen                  | Team                                    |
-| Gefunden durch Test                 | 7 angeklickt                            |
-| Beschreibung des Fehlerverhaltens   | Button „7“ geht nicht in GUI            |
-| Vermutete Fehlerursache             | Bei Klick GUI keine Funktion aufgerufen |
-| Vorschlag zur Fehlerbehebung        | Funktion hinterlegen                    |
+| Gefunden durch Test                 | ² (mehrfach) verwendet                  |
+| Beschreibung des Fehlerverhaltens   | Wenn man bereits eine Berechnung gemacht hat & eine neue Zahl eingeben möchte, wird diese immer auf 0.0 gesetzt |
+| Vermutete Fehlerursache             |                                         |
+| Vorschlag zur Fehlerbehebung        |                                         |
 | Status                              | Offen                                   |
 
 | Fehlerfund                          |                                         |
 |-------------------------------------|-----------------------------------------|
-| Problemreport                       | PR-Calc-1                               |
+| Problemreport                       | PR-Calc-10                              |
 | Datum                               | 2016-03-22                              |
 | Gefunden durch wen                  | Team                                    |
-| Gefunden durch Test                 | 7 angeklickt                            |
-| Beschreibung des Fehlerverhaltens   | Button „7“ geht nicht in GUI            |
-| Vermutete Fehlerursache             | Bei Klick GUI keine Funktion aufgerufen |
-| Vorschlag zur Fehlerbehebung        | Funktion hinterlegen                    |
+| Gefunden durch Test                 | ² (mehrfach) verwendet                  |
+| Beschreibung des Fehlerverhaltens   | Quadrieren von 2er-Potenzen geht nicht, ab 2. Mal wird Ergebnis immer negativ |
+| Vermutete Fehlerursache             | Zahlen irgendwo negativ interpretiert   |
+| Vorschlag zur Fehlerbehebung        | Stelle finden und korrigieren           |
+| Status                              | Offen                                   |
+
+| Fehlerfund                          |                                         |
+|-------------------------------------|-----------------------------------------|
+| Problemreport                       | PR-Calc-11                              |
+| Datum                               | 2016-03-22                              |
+| Gefunden durch wen                  | Team                                    |
+| Gefunden durch Test                 | √ versucht zu verwenden                 |
+| Beschreibung des Fehlerverhaltens   | Wurzelfunktion gar nicht verfügbar      |
+| Vermutete Fehlerursache             | Zahlen irgendwo negativ interpretiert   |
+| Vorschlag zur Fehlerbehebung        | Stelle finden und korrigieren           |
+| Status                              | Offen                                   |
+
+#### Binäre Operanden
+
+| Fehlerfund                          |                                         |
+|-------------------------------------|-----------------------------------------|
+| Problemreport                       | PR-Calc-11                              |
+| Datum                               | 2016-03-22                              |
+| Gefunden durch wen                  | Team                                    |
+| Gefunden durch Test                 | √ versucht zu verwenden                 |
+| Beschreibung des Fehlerverhaltens   | Wurzelfunktion gar nicht verfügbar      |
+| Vermutete Fehlerursache             | Zahlen irgendwo negativ interpretiert   |
+| Vorschlag zur Fehlerbehebung        | Stelle finden und korrigieren           |
+| Status                              | Offen                                   |
+
+| Fehlerfund                          |                                         |
+|-------------------------------------|-----------------------------------------|
+| Problemreport                       | PR-Calc-12                              |
+| Datum                               | 2016-03-22                              |
+| Gefunden durch wen                  | Team                                    |
+| Gefunden durch Test                 | Versucht, Berechnungen zu verketten     |
+| Beschreibung des Fehlerverhaltens   | Verkettung von Berechnungen geht nicht, maximal 1 Binäroperator |
+| Vermutete Fehlerursache             | Matching via Regex sieht nur 1 Operator jeweils vor |
+| Vorschlag zur Fehlerbehebung        | Regex anpassen                          |
+| Status                              | Offen                                   |
+
+| Mangel                              |                                         |
+|-------------------------------------|-----------------------------------------|
+| Problemreport                       | PR-Calc-13                              |
+| Datum                               | 2016-03-22                              |
+| Gefunden durch wen                  | Team                                    |
+| Gefunden durch Test                 | Berechnung mit Binäroperator eingegeben |
+| Beschreibung des Fehlerverhaltens   | Die erste eingegebene Zahl bleibt immer gemäß Eingabe, die zweite Zahl wird _immer_ zu einer Kommazahl umgewandelt |
+| Vermutete Fehlerursache             | Umwandlung von letzter Zahl im Code     |
+| Vorschlag zur Fehlerbehebung        | Umwandlung entfernen                    |
+| Status                              | Offen                                   |
+
+| Fehlerfund                          |                                         |
+|-------------------------------------|-----------------------------------------|
+| Problemreport                       | PR-Calc-14                              |
+| Datum                               | 2016-03-22                              |
+| Gefunden durch wen                  | Team                                    |
+| Gefunden durch Test                 | Additionen eingegeben                   |
+| Beschreibung des Fehlerverhaltens   | Statt einer Addition wird immer eine Subtraktion durchgeführt |
+| Vermutete Fehlerursache             | Falsche Implementierung/ falsche Funktion hinterlegt |
+| Vorschlag zur Fehlerbehebung        | Implementieren/ richtig hinterlegen     |
+| Status                              | Offen                                   |
+
+| Fehlerfund                          |                                         |
+|-------------------------------------|-----------------------------------------|
+| Problemreport                       | PR-Calc-15                              |
+| Datum                               | 2016-03-22                              |
+| Gefunden durch wen                  | Team                                    |
+| Gefunden durch Test                 | Additionen eingegeben                   |
+| Beschreibung des Fehlerverhaltens   | 1 und 4 scheinen negativ gewertet zu werden |
+| Vermutete Fehlerursache             | Umwandlung im Negativzahlen             |
+| Vorschlag zur Fehlerbehebung        | Negierung entfernen                     |
 | Status                              | Offen                                   |
