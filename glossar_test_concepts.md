@@ -70,7 +70,30 @@ __Quellen__:
 * [Microsoft](https://msdn.microsoft.com/en-us/library/bb924374.aspx), Stand: 03.04.2016 21:05
 
 ## Explorativer Test
+__Bedeutung__:    
+Exploratives Testen ist ein intuitives Vorgehen, welches als Ergänzung zum systematischen Testen dient. Hierbei dient die intuitive Fähigkeit und Erfahrung des Testers, Testfälle nach erwarteten Fehlerzuständen und -wirkungen auszuwählen. Beispielsweise basieren Testfälle auf den Erfahrungen, wo Fehler in der Vergangenheit aufgetreten sind, oder die Vermutung des Testers wo in Zukunft welche auftreten können. Diese Vermutungen können z.B. auf die Erfahrung des Testers basieren, die er bereits in ähnlichen Projekten gemacht hat.
+Bei schlecht oder sogar gar nicht dokumentierten Projekten kann das explorative Testen weiterhelfen. Bei diesem Testverfahren, werden die einzelnen Aufgaben und Funktionen der Anwendung „erforscht“. Anschließend wird entschieden welche Teile getestet werden sollen. Auf diese Weise wird das unbekannte Verhalten des Testobjekts weiter geklärt, dabei dienen Auffälligkeiten und weitere Informationen zur Erstellung der nächsten Testfälle.
+Ein sinnvolles Ergebnis des explorativen Testens kann sein, welche Testverfahren sinnvollerweise für die Anwendung einzusetzen sind.
+
+__Quellen__:    
+* Buch: Andreas Spillner, Tilo Lenz: „Basiswissen Softwaretest“
+* [SWTest-Blog](http://swtest-blog.de/)
+* [Microsoft](http://msdn.microsoft.com)
 
 ## Branch Coverage
+__Bedeutung__:    
+Beim Branch Coverage auch Zweigüberdeckungstest genannt, werden Testfälle hergeleitet die sicherstellen, dass jeder Zweig eines Programms mindestens einmal durchlaufen wird. Mithilfe des Zweigüberdeckungstests lassen sich nicht ausführbare Programmzweige aufspüren.
+
+__Quellen__:    
+* Andreas Spillner, Tilo Lenz: „Basiswissen Softwaretest“
+* [Wikipedia: Kontrollflussorientierte Testverfahren](http://de.wikipedia.org)
+* [Wiki FH WS: Kontrollflussorientierter Test](http://www.iwiki.de)
 
 ## Condition Coverage
+__Bedeutung__:    
+Beim Branch Coverage auch Bedingungsüberdeckungstest genannt, muss jede Teilbedingung (Bedingungen ohne logischen Operator) eines Programms mit „true“ und mit „false“ getestet werden. Dabei wird in Einfachbedingungsüberdeckungstest und in Mehrfachbedingungsüberdeckungstest. Ziel des Einfachbedingungsüberdeckungstest ist es das jede Teilbedingung einmal jeden der Wahrheitswerte annimmt, so gäbe es beifolgendem Beispiel nur zwei Tests: x>3 OR y<5, einmal der Test bei dem die Wahrheitswerte links „true“ und rechts „false“ wären und umgekehrt. Beim Mehrfachbedingungsüberdeckungstest gibt es stets  2^n Testfälle, wobei n die Anzahl der Teilbedingen darstellt da dort jeweils alle Kombinationen von Wahrheitswerten berücksichtigt werden.
+
+__Quellen__:    
+* Andreas Spillner, Tilo Lenz: „Basiswissen Softwaretest“
+* [Wikipedia: Bedingungsüberdeckungstest](http://de.wikipedia.org)
+* [Tutorialspoint](www.tutorialspoint.com)
