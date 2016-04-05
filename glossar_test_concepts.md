@@ -48,9 +48,9 @@ __Unklarheiten__: -
 __Querverweis__: -
 
 __Quellen__:    
-1. [Folien HU Berlin](https://www2.informatik.hu-berlin.de/swt/lehre/MTI/seminars/PR_MTI_1112/resources/restricted/speeches/Unit%20Testing,%20SUnit%20and%20You.pdf), Stand: 03.04.2016. 20:34
-2. [Microsoft](https://msdn.microsoft.com/en-us/library/aa292197%28v=vs.71%29.aspx), Stand: 03.04.2016 20:44
-3. [Informatik aktuell](http://www.informatik-aktuell.de/entwicklung/methoden/gute-unit-tests-und-testgetriebene-entwicklung-tdd.html), Stand: 03.04.2016 20:49
+* [Folien HU Berlin](https://www2.informatik.hu-berlin.de/swt/lehre/MTI/seminars/PR_MTI_1112/resources/restricted/speeches/Unit%20Testing,%20SUnit%20and%20You.pdf), Stand: 03.04.2016. 20:34
+* [Microsoft](https://msdn.microsoft.com/en-us/library/aa292197%28v=vs.71%29.aspx), Stand: 03.04.2016 20:44
+* [Informatik aktuell](http://www.informatik-aktuell.de/entwicklung/methoden/gute-unit-tests-und-testgetriebene-entwicklung-tdd.html), Stand: 03.04.2016 20:49
 
 ## Stress-Test
 __Bedeutung__:    
@@ -65,9 +65,9 @@ __Unklarheiten__: -
 __Querverweis__: -
 
 __Quellen__:    
-1. [Xceptance](https://blog.xceptance.com/2009/09/16/begriffe-erklart-lasttest-stresstest/), Stand: 03.04.2016 20:58
-2. [Wikipedia](https://de.wikipedia.org/wiki/Softwaretest), Stand: 03.04.2016 21.02
-3. [Microsoft](https://msdn.microsoft.com/en-us/library/bb924374.aspx), Stand: 03.04.2016 21:05
+* [Xceptance](https://blog.xceptance.com/2009/09/16/begriffe-erklart-lasttest-stresstest/), Stand: 03.04.2016 20:58
+* [Wikipedia](https://de.wikipedia.org/wiki/Softwaretest), Stand: 03.04.2016 21.02
+* [Microsoft](https://msdn.microsoft.com/en-us/library/bb924374.aspx), Stand: 03.04.2016 21:05
 
 ## Explorativer Test
 
