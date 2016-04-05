@@ -24,10 +24,10 @@ __Unklarheiten__: -
 __Querverweis__: -
 
 __Quellen__:    
-1. [Folien Uni Marburg](https://www.uni-marburg.de/fb12/swt/lehre/files/est1415/EST150120.pdf), Stand: 03.04.2016. 20:34
-2. [Enzyklopädie der Wirtschaftsinformatik](http://www.enzyklopaedie-der-wirtschaftsinformatik.de/lexikon/is-management/Systementwicklung/Management-der-Systementwicklung/Software-Qualitatsmanagement/Qualitatsmerkmale-von-Software/index.html), Stand: 03.04.2016 20:44
-3. Softwarequalitätsmodelle, Clara Lange, Technische Universität München Fakultät für Informatik, Boltzmannstraße 3 85748 Garching-Forschungszentrum langecl@in.tum.de
-4. [Folien TU Ilmenau](https://www.tu-ilmenau.de/fileadmin/media/sspi/Lehre/Vorlesungen/SQS/VL_Scripte/SQS_1praes.pdf), Stand: 03.04.2016 20:49
+* [Folien Uni Marburg](https://www.uni-marburg.de/fb12/swt/lehre/files/est1415/EST150120.pdf), Stand: 03.04.2016. 20:34
+* [Enzyklopädie der Wirtschaftsinformatik](http://www.enzyklopaedie-der-wirtschaftsinformatik.de/lexikon/is-management/Systementwicklung/Management-der-Systementwicklung/Software-Qualitatsmanagement/Qualitatsmerkmale-von-Software/index.html), Stand: 03.04.2016 20:44
+* Softwarequalitätsmodelle, Clara Lange, Technische Universität München Fakultät für Informatik, Boltzmannstraße 3 85748 Garching-Forschungszentrum langecl@in.tum.de
+* [Folien TU Ilmenau](https://www.tu-ilmenau.de/fileadmin/media/sspi/Lehre/Vorlesungen/SQS/VL_Scripte/SQS_1praes.pdf), Stand: 03.04.2016 20:49
 
 ## Unit-Test
 __Synonym__: Modultest
