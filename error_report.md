@@ -183,7 +183,53 @@ Datum: 22.03.2016
 | Datum                               | 2016-03-22                              |
 | Gefunden durch wen                  | Team                                    |
 | Gefunden durch Test                 | Additionen eingegeben                   |
-| Beschreibung des Fehlerverhaltens   | 1 und 4 scheinen negativ gewertet zu werden |
+| Beschreibung des Fehlerverhaltens   | 1 und 4 scheinen negativ gewertet zu werden, wenn sie am Anfang stehen bei Berechnungen |
 | Vermutete Fehlerursache             | Umwandlung im Negativzahlen             |
 | Vorschlag zur Fehlerbehebung        | Negierung entfernen                     |
+| Status                              | Offen                                   |
+
+| Fehlerfund                          |                                         |
+|-------------------------------------|-----------------------------------------|
+| Problemreport                       | PR-Calc-16                              |
+| Datum                               | 2016-03-22                              |
+| Gefunden durch wen                  | Team                                    |
+| Gefunden durch Test                 | Division von 0 durch andere Zahl eingegeben |
+| Beschreibung des Fehlerverhaltens   | 0 : x ergibt immer Infinity             |
+| Vermutete Fehlerursache             | Statt 0 wird Infinity zurückgegeben (mathematisch inkorrekt und in Spezifikation dies als gewünschtes Verhalten nicht ersichtlich) |
+| Vorschlag zur Fehlerbehebung        | Klären, was gewünscht und entsprechend dokumentieren/ abändern |
+| Status                              | Offen                                   |
+
+| Fehlerfund                          |                                         |
+|-------------------------------------|-----------------------------------------|
+| Problemreport                       | PR-Calc-17                              |
+| Datum                               | 2016-03-22                              |
+| Gefunden durch wen                  | Team                                    |
+| Gefunden durch Test                 | Division eingegeben                     |
+| Beschreibung des Fehlerverhaltens   | Es wird immer ArithmeticException: Divided by 0 geworfen (außer gm PR-Calc-16) |
+| Vermutete Fehlerursache             | Divisor wird immer als 0 interpretiert statt aus der Eingabe gelesen |
+| Vorschlag zur Fehlerbehebung        | Tatsächliche Eingabe verwenden          |
+| Status                              | Offen                                   |
+
+| Fehlerfund                          |                                         |
+|-------------------------------------|-----------------------------------------|
+| Problemreport                       | PR-Calc-18                              |
+| Datum                               | 2016-03-22                              |
+| Gefunden durch wen                  | Team                                    |
+| Gefunden durch Test                 | Multiplikation eingegeben               |
+| Beschreibung des Fehlerverhaltens   | Ergebnisse, die eigentlich Nachkommastellen haben, werden immer auf ganze Zahlen abgerundet |
+| Vermutete Fehlerursache             | Produkt wird immer abgeschnitten/ gecastet |
+| Vorschlag zur Fehlerbehebung        | Tatsächliches Produkt zurückgeben       |
+| Status                              | Offen                                   |
+
+#### Utilities
+
+| Fehlerfund                          |                                         |
+|-------------------------------------|-----------------------------------------|
+| Problemreport                       | PR-Calc-19                              |
+| Datum                               | 2016-03-22                              |
+| Gefunden durch wen                  | Team                                    |
+| Gefunden durch Test                 | Nach Berechnung neue Zahl eingegeben    |
+| Beschreibung des Fehlerverhaltens   | Wenn eine Berechnung durchgeführt wurde und man eine neue Zahl eintippt, wird der Screen nicht geleert und dann die neue Zahl geschrieben. Stattdessen wird die neue Zahl an das Ergebnis angehängt |
+| Vermutete Fehlerursache             | Ggf ist nicht der C-Button in der GUI defekt, sondern die Clearfunktion selber ist nicht (richtig) implementiert oder wird nicht nach Ergebnis und bei neuer Eingabe automatisch aufgerufen |
+| Vorschlag zur Fehlerbehebung        | Clearfunktion implementieren/ nutzen    |
 | Status                              | Offen                                   |
