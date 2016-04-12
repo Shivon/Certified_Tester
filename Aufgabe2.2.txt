@@ -1,0 +1,77 @@
+Aufgabe 2.2.
+
+- Processing
+	-> appendDigit: 
+		- Eingabe: nur Zahlen
+		- Eingabe: Länge max. 21 Zeichen
+		- Zustandsbasiert
+		- Grenzwerte: Eingaben > 21 Zeichen 
+		- gültige Äquivalenzklasse: Zahlen
+		- ungültige ÄK: alles andere
+	-> appendDot:
+		- Eingabe: nur .
+		- Eingabe: Länge max. 21 Zeichen
+		- Zustandsbasiert
+		- nur ein . insgesamt
+		- . darf nicht das 21ste Zeichen sein
+		- gültige Äquivalenzklasse: . 
+		- ungültige Äquivalenzklasse: alles andere
+	-> clear:
+		- Zustandsbasiert
+	-> backspace:
+		- Zustandsbasiert
+	-> sqrt:
+		- Zustandsbasiert
+	-> pow:
+		- Zustandsbasiert
+	-> operation:
+		- gültige Äquivalenzklassen: +, -, *, /, square, square root
+	-> equal:
+		- Zustandsbasiert
+		- vorherige Eingabe von 2 Zahlen nötig
+	-> mul:
+		- gültige Äquivalenzklassen: min Double bis max Double
+		- ungültige ÄK: alles andere (int, char,...)
+	-> div:
+		- gültige Äquivalenzklassen: min Double bis max Double
+		- ungültige ÄK: alles andere (int, char,...), denominator = 0
+	-> minus:
+		- gültige Äquivalenzklassen: min Double bis max Double
+		- ungültige ÄK: alles andere (int, char,...)
+	-> plus:
+		- gültige Äquivalenzklassen: min Double bis max Double
+		- ungültige ÄK: alles andere (int, char,...)
+	-> power:
+		- gültige Äquivalenzklassen: min Double bis max Double
+		- ungültige ÄK: alles andere (int, char,...)
+	-> sqrt(double):
+		- gültige Äquivalenzklassen: min Double bis max Double
+		- ungültige ÄK: alles andere (int, char,...)
+		
+- Storage:
+	-> setNum:
+		- gültige Äquivalenzklassen: min Double bis max Double
+		- ungültige ÄK: alles andere (int, char,...)
+	-> getNum:
+		- Zustandsbasiert
+	-> isNumSet
+		- Zustandsbasiert
+	-> clear:
+		- Zustandsbasiert
+	-> getNumberLine:
+		- Zustandsbasiert
+	-> getEquationLine:
+		- Zustandsbasiert
+	-> setNumberLine:
+		- gültige Äquivalenzklasse: String, min Double bis max Double und .
+		- ungültige ÄK: alle Buchstaben und andere Zeichen
+	-> setEquationLine:
+		- gültige Äquivalenzklasse: String, min Double bis max Double, alle Operatoren und .
+		- ungültige ÄK: alle Buchstaben (vielleicht ausgenommen E) und andere Zeichen
+	-> appendToNumberLine:
+		- gültige Äquivalenzklasse: String, min Double bis max Double und .
+		- ungültige ÄK: alle Buchstaben und andere Zeichen	
+	-> appendToEquationLine:
+		- gültige Äquivalenzklasse: String, min Double bis max Double, alle Operatoren und .
+		- ungültige ÄK: alle Buchstaben (vielleicht ausgenommen E) und andere Zeichen	
+		
