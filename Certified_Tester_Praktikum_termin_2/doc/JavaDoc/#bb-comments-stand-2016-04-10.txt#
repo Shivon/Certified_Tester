@@ -1,0 +1,9 @@
+Anmerkungen zum JavaDoc
+Stand 2016-04-10
+-----------------------
+
+
+class Storage:
+-------------
+appendEquationLine/appendNumberLine -- wäre nicht in beiden Fällen appendTo.. ein aussagekräftigerer Name?
+
