@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>Gui.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">Processing_Test (09.05.2016 18:57:19)</a> &gt; <a href="../../index.html" class="el_group">Certified_Tester_Praktikum_Termin_3</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">gfx</a> &gt; <span class="el_source">Gui.java</span></div><h1>Gui.java</h1><pre class="source lang-java linenums"><span class="nc" id="L1">package gfx;</span>
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import logic.Processing;
+
+import java.awt.GridBagLayout;
+import javax.swing.JButton;
+import java.awt.GridBagConstraints;
+import javax.swing.JLabel;
+import java.awt.Insets;
+import javax.swing.JSeparator;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+
+public class Gui extends JFrame {
+
+  private static final long serialVersionUID = 404210615100921952L;
+  private static final int FRAMEWIDTH = 320;
+  private static final int FRAMEHEIGHT = 234;
+  private static final int NOROW = 4;
+
+  private Processing pUnit;
+  private JPanel contentPane;
+  private JLabel lblNewLabel; // numberLabel
+  private JLabel lblNewLabel_1; // equationLabel
+
+  /**
+   * Create the frame.
+   */
+<span class="nc" id="L36">  public Gui(Processing processingUnit) {</span>
+
+<span class="nc" id="L38">    pUnit = processingUnit;</span>
+<span class="nc" id="L39">    setResizable(false);</span>
+<span class="nc" id="L40">    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L41">    setBounds(100, 100, FRAMEWIDTH + 10, FRAMEHEIGHT + 10);</span>
+<span class="nc" id="L42">    setTitle(&quot;CT - Calculator&quot;);</span>
+<span class="nc" id="L43">    contentPane = new JPanel();</span>
+<span class="nc" id="L44">    contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));</span>
+<span class="nc" id="L45">    setContentPane(contentPane);</span>
+<span class="nc" id="L46">    GridBagLayout gbl_contentPane = new GridBagLayout();</span>
+<span class="nc" id="L47">    gbl_contentPane.columnWidths = new int[] { FRAMEWIDTH / NOROW, FRAMEWIDTH / NOROW, FRAMEWIDTH / NOROW, FRAMEWIDTH / NOROW, 0 };</span>
+<span class="nc" id="L48">    gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };</span>
+<span class="nc" id="L49">    gbl_contentPane.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };</span>
+<span class="nc" id="L50">    gbl_contentPane.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };</span>
+<span class="nc" id="L51">    contentPane.setLayout(gbl_contentPane);</span>
+
+<span class="nc" id="L53">    lblNewLabel_1 = new JLabel(&quot; &quot;);</span>
+<span class="nc" id="L54">    lblNewLabel_1.setFont(new Font(&quot;SansSerif&quot;, Font.PLAIN, 11));</span>
+<span class="nc" id="L55">    lblNewLabel_1.setVisible(true);</span>
+<span class="nc" id="L56">    GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();</span>
+<span class="nc" id="L57">    gbc_lblNewLabel_1.anchor = GridBagConstraints.LINE_END;</span>
+<span class="nc" id="L58">    gbc_lblNewLabel_1.gridwidth = 3;</span>
+<span class="nc" id="L59">    gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L60">    gbc_lblNewLabel_1.gridx = 0;</span>
+<span class="nc" id="L61">    gbc_lblNewLabel_1.gridy = 0;</span>
+<span class="nc" id="L62">    contentPane.add(lblNewLabel_1, gbc_lblNewLabel_1);</span>
+
+<span class="nc" id="L64">    JButton btnNewButton_16 = new JButton(&quot;=&quot;);</span>
+<span class="nc" id="L65">    GridBagConstraints gbc_btnNewButton_16 = new GridBagConstraints();</span>
+<span class="nc" id="L66">    gbc_btnNewButton_16.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L67">    gbc_btnNewButton_16.gridheight = 2;</span>
+<span class="nc" id="L68">    gbc_btnNewButton_16.insets = new Insets(0, 0, 5, 0);</span>
+<span class="nc" id="L69">    gbc_btnNewButton_16.gridx = 3;</span>
+<span class="nc" id="L70">    gbc_btnNewButton_16.gridy = 0;</span>
+<span class="nc" id="L71">    contentPane.add(btnNewButton_16, gbc_btnNewButton_16);</span>
+<span class="nc" id="L72">    btnNewButton_16.addActionListener(new ActionListener() {</span>
+      @Override
+      public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L75">        pUnit.equal();</span>
+<span class="nc" id="L76">        updateDisplay();</span>
+<span class="nc" id="L77">      }</span>
+    });
+
+<span class="nc" id="L80">    lblNewLabel = new JLabel(&quot;0&quot;);</span>
+<span class="nc" id="L81">    lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);</span>
+<span class="nc" id="L82">    lblNewLabel.setFont(new Font(&quot;SansSerif&quot;, Font.PLAIN, 18));</span>
+<span class="nc" id="L83">    GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();</span>
+<span class="nc" id="L84">    gbc_lblNewLabel.anchor = GridBagConstraints.EAST;</span>
+<span class="nc" id="L85">    gbc_lblNewLabel.fill = GridBagConstraints.NONE;</span>
+<span class="nc" id="L86">    gbc_lblNewLabel.gridwidth = 3;</span>
+<span class="nc" id="L87">    gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L88">    gbc_lblNewLabel.gridx = 0;</span>
+<span class="nc" id="L89">    gbc_lblNewLabel.gridy = 1;</span>
+<span class="nc" id="L90">    contentPane.add(lblNewLabel, gbc_lblNewLabel);</span>
+
+<span class="nc" id="L92">    JSeparator separator = new JSeparator();</span>
+<span class="nc" id="L93">    separator.setForeground(Color.BLACK);</span>
+<span class="nc" id="L94">    GridBagConstraints gbc_separator = new GridBagConstraints();</span>
+<span class="nc" id="L95">    gbc_separator.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L96">    gbc_separator.gridwidth = 4;</span>
+<span class="nc" id="L97">    gbc_separator.insets = new Insets(0, 0, 5, 0);</span>
+<span class="nc" id="L98">    gbc_separator.gridx = 0;</span>
+<span class="nc" id="L99">    gbc_separator.gridy = 2;</span>
+<span class="nc" id="L100">    contentPane.add(separator, gbc_separator);</span>
+
+<span class="nc" id="L102">    JButton btnNewButton_1 = new JButton(&quot;\u2190&quot;);</span>
+<span class="nc" id="L103">    btnNewButton_1.setFont(new Font(&quot;SansSerif&quot;, Font.PLAIN, 11));</span>
+<span class="nc" id="L104">    btnNewButton_1.addActionListener(new ActionListener() {</span>
+      public void actionPerformed(ActionEvent arg0) {
+<span class="nc" id="L106">        pUnit.backspace();</span>
+<span class="nc" id="L107">        updateDisplay();</span>
+        ;
+<span class="nc" id="L109">      }</span>
+    });
+<span class="nc" id="L111">    GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();</span>
+<span class="nc" id="L112">    gbc_btnNewButton_1.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L113">    gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L114">    gbc_btnNewButton_1.gridx = 0;</span>
+<span class="nc" id="L115">    gbc_btnNewButton_1.gridy = 3;</span>
+<span class="nc" id="L116">    contentPane.add(btnNewButton_1, gbc_btnNewButton_1);</span>
+
+<span class="nc" id="L118">    JButton btnNewButton_2 = new JButton(&quot;C&quot;);</span>
+<span class="nc" id="L119">    btnNewButton_2.addActionListener(new ActionListener() {</span>
+      public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L121">        pUnit.clear();</span>
+<span class="nc" id="L122">        updateDisplay();</span>
+<span class="nc" id="L123">      }</span>
+    });
+<span class="nc" id="L125">    btnNewButton_2.setFont(new Font(&quot;SansSerif&quot;, Font.PLAIN, 11));</span>
+<span class="nc" id="L126">    GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();</span>
+<span class="nc" id="L127">    gbc_btnNewButton_2.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L128">    gbc_btnNewButton_2.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L129">    gbc_btnNewButton_2.gridx = 1;</span>
+<span class="nc" id="L130">    gbc_btnNewButton_2.gridy = 3;</span>
+<span class="nc" id="L131">    contentPane.add(btnNewButton_2, gbc_btnNewButton_2);</span>
+
+<span class="nc" id="L133">    JButton btnNewButton_3 = new JButton(&quot;x\u00B2&quot;); // x square</span>
+<span class="nc" id="L134">    btnNewButton_3.addActionListener(new ActionListener() {</span>
+      public void actionPerformed(ActionEvent e) {
+<span class="nc bnc" id="L136" title="All 2 branches missed.">        if (pUnit.pow()) {</span>
+<span class="nc" id="L137">          updateDisplay();</span>
+        }
+<span class="nc" id="L139">      }</span>
+    });
+<span class="nc" id="L141">    btnNewButton_3.setFont(new Font(&quot;SansSerif&quot;, Font.PLAIN, 11));</span>
+<span class="nc" id="L142">    GridBagConstraints gbc_btnNewButton_3 = new GridBagConstraints();</span>
+<span class="nc" id="L143">    gbc_btnNewButton_3.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L144">    gbc_btnNewButton_3.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L145">    gbc_btnNewButton_3.gridx = 2;</span>
+<span class="nc" id="L146">    gbc_btnNewButton_3.gridy = 3;</span>
+<span class="nc" id="L147">    contentPane.add(btnNewButton_3, gbc_btnNewButton_3);</span>
+
+<span class="nc" id="L149">    JButton btnNewButton = new JButton(&quot;\u221A&quot;); // sqrt</span>
+<span class="nc" id="L150">    btnNewButton.addActionListener(new ActionListener() {</span>
+      public void actionPerformed(ActionEvent e) {
+<span class="nc bnc" id="L152" title="All 2 branches missed.">        if (pUnit.sqrt()) {</span>
+<span class="nc" id="L153">          updateDisplay();</span>
+        }
+<span class="nc" id="L155">      }</span>
+    });
+<span class="nc" id="L157">    GridBagConstraints gbc_btnNewButton = new GridBagConstraints();</span>
+<span class="nc" id="L158">    gbc_btnNewButton.insets = new Insets(0, 0, 5, 0);</span>
+<span class="nc" id="L159">    gbc_btnNewButton.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L160">    gbc_btnNewButton.gridx = 3;</span>
+<span class="nc" id="L161">    gbc_btnNewButton.gridy = 3;</span>
+<span class="nc" id="L162">    contentPane.add(btnNewButton, gbc_btnNewButton);</span>
+
+<span class="nc" id="L164">    JButton btnNewButton_4 = new JButton(&quot;7&quot;);</span>
+<span class="nc" id="L165">    btnNewButton_4.addActionListener((e) -&gt; {</span>
+
+<span class="nc" id="L167">    });</span>
+<span class="nc" id="L168">    btnNewButton_4.setFont(new Font(&quot;SansSerif&quot;, Font.PLAIN, 11));</span>
+<span class="nc" id="L169">    GridBagConstraints gbc_btnNewButton_4 = new GridBagConstraints();</span>
+<span class="nc" id="L170">    gbc_btnNewButton_4.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L171">    gbc_btnNewButton_4.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L172">    gbc_btnNewButton_4.gridx = 0;</span>
+<span class="nc" id="L173">    gbc_btnNewButton_4.gridy = 4;</span>
+<span class="nc" id="L174">    contentPane.add(btnNewButton_4, gbc_btnNewButton_4);</span>
+
+<span class="nc" id="L176">    JButton btnNewButton_5 = new JButton(&quot;8&quot;);</span>
+<span class="nc" id="L177">    btnNewButton_5.addActionListener(new CalculatorNumberListener());</span>
+<span class="nc" id="L178">    btnNewButton_5.setFont(new Font(&quot;SansSerif&quot;, Font.PLAIN, 11));</span>
+<span class="nc" id="L179">    GridBagConstraints gbc_btnNewButton_5 = new GridBagConstraints();</span>
+<span class="nc" id="L180">    gbc_btnNewButton_5.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L181">    gbc_btnNewButton_5.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L182">    gbc_btnNewButton_5.gridx = 1;</span>
+<span class="nc" id="L183">    gbc_btnNewButton_5.gridy = 4;</span>
+<span class="nc" id="L184">    contentPane.add(btnNewButton_5, gbc_btnNewButton_5);</span>
+
+<span class="nc" id="L186">    JButton btnNewButton_6 = new JButton(&quot;9&quot;);</span>
+<span class="nc" id="L187">    btnNewButton_6.addActionListener(new CalculatorNumberListener());</span>
+<span class="nc" id="L188">    btnNewButton_6.setFont(new Font(&quot;SansSerif&quot;, Font.PLAIN, 11));</span>
+<span class="nc" id="L189">    GridBagConstraints gbc_btnNewButton_6 = new GridBagConstraints();</span>
+<span class="nc" id="L190">    gbc_btnNewButton_6.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L191">    gbc_btnNewButton_6.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L192">    gbc_btnNewButton_6.gridx = 2;</span>
+<span class="nc" id="L193">    gbc_btnNewButton_6.gridy = 4;</span>
+<span class="nc" id="L194">    contentPane.add(btnNewButton_6, gbc_btnNewButton_6);</span>
+
+<span class="nc" id="L196">    JButton btnNewButton_15 = new JButton(&quot;+&quot;);</span>
+<span class="nc" id="L197">    btnNewButton_15.addActionListener(new ActionListener() {</span>
+      public void actionPerformed(ActionEvent arg0) {
+<span class="nc" id="L199">        pUnit.operation('+');</span>
+<span class="nc" id="L200">        updateDisplay();</span>
+<span class="nc" id="L201">      }</span>
+    });
+<span class="nc" id="L203">    btnNewButton_15.setFont(new Font(&quot;SansSerif&quot;, Font.PLAIN, 11));</span>
+<span class="nc" id="L204">    GridBagConstraints gbc_btnNewButton_15 = new GridBagConstraints();</span>
+<span class="nc" id="L205">    gbc_btnNewButton_15.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L206">    gbc_btnNewButton_15.insets = new Insets(0, 0, 5, 0);</span>
+<span class="nc" id="L207">    gbc_btnNewButton_15.gridx = 3;</span>
+<span class="nc" id="L208">    gbc_btnNewButton_15.gridy = 4;</span>
+<span class="nc" id="L209">    contentPane.add(btnNewButton_15, gbc_btnNewButton_15);</span>
+
+<span class="nc" id="L211">    JButton btnNewButton_8 = new JButton(&quot;4&quot;);</span>
+<span class="nc" id="L212">    btnNewButton_8.addActionListener(new CalculatorNumberListener());</span>
+<span class="nc" id="L213">    btnNewButton_8.setFont(new Font(&quot;SansSerif&quot;, Font.PLAIN, 11));</span>
+<span class="nc" id="L214">    GridBagConstraints gbc_btnNewButton_8 = new GridBagConstraints();</span>
+<span class="nc" id="L215">    gbc_btnNewButton_8.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L216">    gbc_btnNewButton_8.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L217">    gbc_btnNewButton_8.gridx = 0;</span>
+<span class="nc" id="L218">    gbc_btnNewButton_8.gridy = 5;</span>
+<span class="nc" id="L219">    contentPane.add(btnNewButton_8, gbc_btnNewButton_8);</span>
+
+<span class="nc" id="L221">    JButton btnNewButton_9 = new JButton(&quot;5&quot;);</span>
+<span class="nc" id="L222">    btnNewButton_9.addActionListener(new CalculatorNumberListener());</span>
+<span class="nc" id="L223">    btnNewButton_9.setFont(new Font(&quot;SansSerif&quot;, Font.PLAIN, 11));</span>
+<span class="nc" id="L224">    GridBagConstraints gbc_btnNewButton_9 = new GridBagConstraints();</span>
+<span class="nc" id="L225">    gbc_btnNewButton_9.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L226">    gbc_btnNewButton_9.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L227">    gbc_btnNewButton_9.gridx = 1;</span>
+<span class="nc" id="L228">    gbc_btnNewButton_9.gridy = 5;</span>
+<span class="nc" id="L229">    contentPane.add(btnNewButton_9, gbc_btnNewButton_9);</span>
+
+<span class="nc" id="L231">    JButton btnNewButton_10 = new JButton(&quot;6&quot;);</span>
+<span class="nc" id="L232">    btnNewButton_10.addActionListener(new CalculatorNumberListener());</span>
+<span class="nc" id="L233">    btnNewButton_10.setFont(new Font(&quot;SansSerif&quot;, Font.PLAIN, 11));</span>
+<span class="nc" id="L234">    GridBagConstraints gbc_btnNewButton_10 = new GridBagConstraints();</span>
+<span class="nc" id="L235">    gbc_btnNewButton_10.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L236">    gbc_btnNewButton_10.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L237">    gbc_btnNewButton_10.gridx = 2;</span>
+<span class="nc" id="L238">    gbc_btnNewButton_10.gridy = 5;</span>
+<span class="nc" id="L239">    contentPane.add(btnNewButton_10, gbc_btnNewButton_10);</span>
+
+<span class="nc" id="L241">    JButton btnNewButton_20 = new JButton(&quot;-&quot;);</span>
+<span class="nc" id="L242">    btnNewButton_20.addActionListener(new ActionListener() {</span>
+      public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L244">        pUnit.operation('-');</span>
+<span class="nc" id="L245">        updateDisplay();</span>
+<span class="nc" id="L246">      }</span>
+    });
+<span class="nc" id="L248">    btnNewButton_20.setFont(new Font(&quot;SansSerif&quot;, Font.PLAIN, 11));</span>
+<span class="nc" id="L249">    GridBagConstraints gbc_btnNewButton_20 = new GridBagConstraints();</span>
+<span class="nc" id="L250">    gbc_btnNewButton_20.insets = new Insets(0, 0, 5, 0);</span>
+<span class="nc" id="L251">    gbc_btnNewButton_20.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L252">    gbc_btnNewButton_20.gridx = 3;</span>
+<span class="nc" id="L253">    gbc_btnNewButton_20.gridy = 5;</span>
+<span class="nc" id="L254">    contentPane.add(btnNewButton_20, gbc_btnNewButton_20);</span>
+
+<span class="nc" id="L256">    JButton btnNewButton_12 = new JButton(&quot;1&quot;);</span>
+<span class="nc" id="L257">    btnNewButton_12.addActionListener(new CalculatorNumberListener());</span>
+<span class="nc" id="L258">    btnNewButton_12.setFont(new Font(&quot;SansSerif&quot;, Font.PLAIN, 11));</span>
+<span class="nc" id="L259">    GridBagConstraints gbc_btnNewButton_12 = new GridBagConstraints();</span>
+<span class="nc" id="L260">    gbc_btnNewButton_12.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L261">    gbc_btnNewButton_12.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L262">    gbc_btnNewButton_12.gridx = 0;</span>
+<span class="nc" id="L263">    gbc_btnNewButton_12.gridy = 6;</span>
+<span class="nc" id="L264">    contentPane.add(btnNewButton_12, gbc_btnNewButton_12);</span>
+
+<span class="nc" id="L266">    JButton btnNewButton_13 = new JButton(&quot;2&quot;);</span>
+<span class="nc" id="L267">    btnNewButton_13.addActionListener(new CalculatorNumberListener());</span>
+<span class="nc" id="L268">    btnNewButton_13.setFont(new Font(&quot;SansSerif&quot;, Font.PLAIN, 11));</span>
+<span class="nc" id="L269">    GridBagConstraints gbc_btnNewButton_13 = new GridBagConstraints();</span>
+<span class="nc" id="L270">    gbc_btnNewButton_13.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L271">    gbc_btnNewButton_13.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L272">    gbc_btnNewButton_13.gridx = 1;</span>
+<span class="nc" id="L273">    gbc_btnNewButton_13.gridy = 6;</span>
+<span class="nc" id="L274">    contentPane.add(btnNewButton_13, gbc_btnNewButton_13);</span>
+
+<span class="nc" id="L276">    JButton btnNewButton_14 = new JButton(&quot;3&quot;);</span>
+<span class="nc" id="L277">    btnNewButton_14.addActionListener(new CalculatorNumberListener());</span>
+<span class="nc" id="L278">    btnNewButton_14.setFont(new Font(&quot;SansSerif&quot;, Font.PLAIN, 11));</span>
+<span class="nc" id="L279">    GridBagConstraints gbc_btnNewButton_14 = new GridBagConstraints();</span>
+<span class="nc" id="L280">    gbc_btnNewButton_14.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L281">    gbc_btnNewButton_14.insets = new Insets(0, 0, 5, 5);</span>
+<span class="nc" id="L282">    gbc_btnNewButton_14.gridx = 2;</span>
+<span class="nc" id="L283">    gbc_btnNewButton_14.gridy = 6;</span>
+<span class="nc" id="L284">    contentPane.add(btnNewButton_14, gbc_btnNewButton_14);</span>
+
+<span class="nc" id="L286">    JButton button = new JButton(&quot;\u00D7&quot;); // times</span>
+<span class="nc" id="L287">    button.addActionListener(new ActionListener() {</span>
+      public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L289">        pUnit.operation('*');</span>
+<span class="nc" id="L290">        updateDisplay();</span>
+<span class="nc" id="L291">      }</span>
+    });
+<span class="nc" id="L293">    button.setFont(new Font(&quot;SansSerif&quot;, Font.PLAIN, 11));</span>
+<span class="nc" id="L294">    GridBagConstraints gbc_button = new GridBagConstraints();</span>
+<span class="nc" id="L295">    gbc_button.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L296">    gbc_button.insets = new Insets(0, 0, 5, 0);</span>
+<span class="nc" id="L297">    gbc_button.gridx = 3;</span>
+<span class="nc" id="L298">    gbc_button.gridy = 6;</span>
+<span class="nc" id="L299">    contentPane.add(button, gbc_button);</span>
+
+<span class="nc" id="L301">    JButton btnNewButton_17 = new JButton(&quot;0&quot;);</span>
+<span class="nc" id="L302">    btnNewButton_17.addActionListener(new CalculatorNumberListener());</span>
+<span class="nc" id="L303">    btnNewButton_17.setFont(new Font(&quot;SansSerif&quot;, Font.PLAIN, 11));</span>
+<span class="nc" id="L304">    GridBagConstraints gbc_btnNewButton_17 = new GridBagConstraints();</span>
+<span class="nc" id="L305">    gbc_btnNewButton_17.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L306">    gbc_btnNewButton_17.gridwidth = 2;</span>
+<span class="nc" id="L307">    gbc_btnNewButton_17.insets = new Insets(0, 0, 0, 5);</span>
+<span class="nc" id="L308">    gbc_btnNewButton_17.gridx = 0;</span>
+<span class="nc" id="L309">    gbc_btnNewButton_17.gridy = 7;</span>
+<span class="nc" id="L310">    contentPane.add(btnNewButton_17, gbc_btnNewButton_17);</span>
+
+<span class="nc" id="L312">    JButton btnNewButton_19 = new JButton(&quot;.&quot;);</span>
+<span class="nc" id="L313">    btnNewButton_19.addActionListener(new ActionListener() {</span>
+      public void actionPerformed(ActionEvent e) {
+<span class="nc bnc" id="L315" title="All 2 branches missed.">        if (pUnit.appendDot()) {</span>
+<span class="nc" id="L316">          updateDisplay();</span>
+        }
+<span class="nc" id="L318">      }</span>
+    });
+<span class="nc" id="L320">    btnNewButton_19.setFont(new Font(&quot;SansSerif&quot;, Font.PLAIN, 11));</span>
+<span class="nc" id="L321">    GridBagConstraints gbc_btnNewButton_19 = new GridBagConstraints();</span>
+<span class="nc" id="L322">    gbc_btnNewButton_19.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L323">    gbc_btnNewButton_19.insets = new Insets(0, 0, 0, 5);</span>
+<span class="nc" id="L324">    gbc_btnNewButton_19.gridx = 2;</span>
+<span class="nc" id="L325">    gbc_btnNewButton_19.gridy = 7;</span>
+<span class="nc" id="L326">    contentPane.add(btnNewButton_19, gbc_btnNewButton_19);</span>
+
+<span class="nc" id="L328">    JButton btnNewButton_11 = new JButton(&quot;\u00F7&quot;); // division</span>
+<span class="nc" id="L329">    btnNewButton_11.addActionListener(new ActionListener() {</span>
+      public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L331">        pUnit.operation('/');</span>
+<span class="nc" id="L332">        updateDisplay();</span>
+<span class="nc" id="L333">      }</span>
+    });
+<span class="nc" id="L335">    btnNewButton_11.setFont(new Font(&quot;SansSerif&quot;, Font.PLAIN, 11));</span>
+<span class="nc" id="L336">    GridBagConstraints gbc_btnNewButton_11 = new GridBagConstraints();</span>
+<span class="nc" id="L337">    gbc_btnNewButton_11.fill = GridBagConstraints.BOTH;</span>
+<span class="nc" id="L338">    gbc_btnNewButton_11.gridx = 3;</span>
+<span class="nc" id="L339">    gbc_btnNewButton_11.gridy = 7;</span>
+<span class="nc" id="L340">    contentPane.add(btnNewButton_11, gbc_btnNewButton_11);</span>
+<span class="nc" id="L341">  }</span>
+
+  private void updateDisplay() {
+<span class="nc" id="L344">    String eqLabel = pUnit.getEquationLine();</span>
+<span class="nc" id="L345">    String numLabel = pUnit.getNumberLine();</span>
+<span class="nc" id="L346">    lblNewLabel.setText(String.format(&quot;%21s&quot;, numLabel));</span>
+<span class="nc" id="L347">    lblNewLabel_1.setText(eqLabel);</span>
+<span class="nc" id="L348">  }</span>
+
+<span class="nc" id="L350">  private class CalculatorNumberListener implements ActionListener {</span>
+    public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L352">      JButton button = (JButton) e.getSource();</span>
+<span class="nc" id="L353">      String text = button.getText();</span>
+<span class="nc bnc" id="L354" title="All 2 branches missed.">      if (pUnit.appendDigit(text)) {</span>
+<span class="nc" id="L355">        updateDisplay();</span>
+      }
+<span class="nc" id="L357">    }</span>
+
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>Processing_Test (09.05.2016 18:57:19)</div></body></html>

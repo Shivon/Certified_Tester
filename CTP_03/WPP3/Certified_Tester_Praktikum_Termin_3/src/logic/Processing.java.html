@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>Processing.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">Processing_Test (09.05.2016 18:57:19)</a> &gt; <a href="../../index.html" class="el_group">Certified_Tester_Praktikum_Termin_3</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">logic</a> &gt; <span class="el_source">Processing.java</span></div><h1>Processing.java</h1><pre class="source lang-java linenums">package logic;
+
+/**
+ * Processing class manages all computational logic for the Certified Tester
+ * Calculator This class acts as a controller in a MVC - fashion
+ * 
+ * @author gOAT
+ *
+ */
+public class Processing {
+
+	private static final int MAXDIGITS = 21;
+	private Storage store;
+
+<span class="fc" id="L15">	private char operator = 0;</span>
+
+	/**
+	 * Processing needs an Storage Object to save calculated Data
+	 * 
+	 * @param store
+	 *            Storage Object
+	 */
+<span class="fc" id="L23">	public Processing(Storage store) {</span>
+<span class="fc" id="L24">		this.store = store;</span>
+<span class="fc" id="L25">	}</span>
+
+	/**
+	 * Returns the NumberLine
+	 * 
+	 * @return returns numberline as String
+	 */
+	public String getNumberLine() {
+<span class="fc" id="L33">		return store.getNumberLine();</span>
+	}
+
+	/**
+	 * Returns the EquationLine
+	 * 
+	 * @return returns equationlineas String
+	 */
+	public String getEquationLine() {
+<span class="nc" id="L42">		return store.getEquationLine();</span>
+	}
+
+	/**
+	 * Appends a String that represents a single digit to the numberline, if
+	 * possible&lt;br&gt;
+	 * &lt;u&gt;Rules for failure:&lt;/u&gt;&lt;br&gt;
+	 * 1) Length of Numberline is greater than MAXDIGITS(21) &lt;br&gt;
+	 * 2) Numline == &quot;0&quot; and &quot;0&quot; is entered. 3) If length of &lt;b&gt;in&lt;/b&gt; is
+	 * greater than 1
+	 * 
+	 * @param in
+	 *            Digit to append Numberline
+	 * @return true - String appended, false - nothing changed
+	 */
+	public boolean appendDigit(String in) {
+<span class="pc bpc" id="L58" title="1 of 2 branches missed.">		if (in.length() &gt; 1) {</span>
+<span class="nc" id="L59">			return false;</span>
+		}
+<span class="pc bpc" id="L61" title="1 of 2 branches missed.">		if (store.getNumberLine().length() &gt; MAXDIGITS) {</span>
+<span class="nc" id="L62">			return false;</span>
+		}
+<span class="pc bpc" id="L64" title="1 of 2 branches missed.">		if (store.getNumberLine().equals(&quot;0&quot;)) {</span>
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">			if (in.equals(&quot;0&quot;)) {</span>
+<span class="nc" id="L66">				return false;</span>
+			}
+<span class="fc" id="L68">			store.setNumberLine(in);</span>
+<span class="fc" id="L69">		} else {</span>
+<span class="nc" id="L70">			store.appendToNumberLine(in);</span>
+		}
+<span class="fc" id="L72">		return true;</span>
+	}
+
+	/**
+	 * Appends a Dot to the Numberline, if possible&lt;br&gt;
+	 * 
+	 * &lt;u&gt;Rules for failure:&lt;/u&gt;&lt;br&gt;
+	 * 1) Length of Numberline is greater than MAXDIGITS(21) &lt;br&gt;
+	 * 2) Last &quot;digit&quot; is a dot. No Multiple dots! Digit to append Numberline
+	 * 
+	 * @return true - dot appended, false - nothing changed
+	 */
+	public boolean appendDot() {
+<span class="nc" id="L85">		int n = store.getNumberLine().length();</span>
+<span class="nc bnc" id="L86" title="All 4 branches missed.">		if (n &gt; MAXDIGITS - 1 || store.getNumberLine().charAt(n - 1) == '.') { // last Digit can't be a dot</span>
+<span class="nc" id="L87">			return false;</span>
+		}
+<span class="nc bnc" id="L89" title="All 2 branches missed.">		if (n &lt; 1) {</span>
+<span class="nc" id="L90">			store.appendToNumberLine(&quot;0&quot;);</span>
+		}
+<span class="nc" id="L92">		store.appendToNumberLine(&quot;.&quot;);</span>
+<span class="nc" id="L93">		return true;</span>
+	}
+
+	/**
+	 * Clears all stored data: Invokes clear() on Storage object
+	 * 
+	 * @see Storage
+	 */
+	public void clear() {
+<span class="nc" id="L102">		store.clear();</span>
+<span class="nc" id="L103">		store = null;</span>
+<span class="nc" id="L104">		operator = 0;</span>
+<span class="nc" id="L105">	}</span>
+
+	/**
+	 * Performs a backspace operation on the Numberline. This will delete the
+	 * last character on the numberline. If the numberline is empty after this
+	 * operation, the numberline will be set to &quot;0&quot;.
+	 */
+	public void backspace() {
+<span class="nc bnc" id="L113" title="All 2 branches missed.">		if (store.getNumberLine().length() &gt; 1) {</span>
+<span class="nc" id="L114">			int n = store.getNumberLine().length();</span>
+<span class="nc" id="L115">			store.setNumberLine(store.getNumberLine().substring(0, n - 1));</span>
+<span class="nc" id="L116">		} else {</span>
+<span class="nc" id="L117">			store.setNumberLine(&quot;0&quot;);</span>
+		}
+<span class="nc bnc" id="L119" title="All 2 branches missed.">		if (store.isNumSet()) {</span>
+<span class="nc" id="L120">			double in = Double.parseDouble(store.getNumberLine());</span>
+<span class="nc" id="L121">			store.setNum(in);</span>
+		}
+<span class="nc" id="L123">	}</span>
+
+	/**
+	 * Parses the numberline, calculates the square root of this number. The
+	 * result will be stored in the storage and displayed in the numberline. A
+	 * squreroot sign with the radicand will be displayed in the equationline.
+	 * &lt;u&gt;fails when:&lt;/u&gt;&lt;br&gt;
+	 * radicand less than 0
+	 * 
+	 * @return true - Update GUI. false - no update necessary
+	 */
+	public boolean sqrt() {
+<span class="nc" id="L135">		double in = Double.parseDouble(store.getNumberLine());</span>
+<span class="nc" id="L136">		Storage store = new Storage();</span>
+<span class="nc bnc" id="L137" title="All 2 branches missed.">		if (store.isNumSet()) {</span>
+<span class="nc" id="L138">			in = store.getNum();</span>
+		}
+<span class="nc bnc" id="L140" title="All 2 branches missed.">		if (operator != 0) {</span>
+<span class="nc" id="L141">			store.setEquationLine(&quot; &quot;);</span>
+		}
+<span class="nc bnc" id="L143" title="All 2 branches missed.">		if (in &gt; 0) {</span>
+<span class="nc" id="L144">			double res = sqrt(in);</span>
+<span class="nc" id="L145">			store.setEquationLine(&quot;\u221A(&quot; + in + &quot;)&quot;);</span>
+<span class="nc" id="L146">			store.setNumberLine(&quot;&quot; + res);</span>
+<span class="nc" id="L147">			store.setNum(res);</span>
+<span class="nc" id="L148">			operator = 'r'; // set to &quot;root&quot;</span>
+<span class="nc" id="L149">		} else {</span>
+<span class="nc" id="L150">			return false;</span>
+		}
+<span class="nc" id="L152">		return true;</span>
+	}
+
+	/**
+	 * Parses the numberline and multiplies it by it self. The result will be
+	 * set to the numberline and stored in the storage. The equationline will
+	 * display the input with a power of 2 sign. In addition the numberline will
+	 * display the result of the operation.
+	 * 
+	 * @return GUI update - false, no update is necessary.
+	 */
+	public boolean pow() {
+<span class="nc" id="L164">		double in = Double.parseDouble(store.getNumberLine());</span>
+<span class="nc bnc" id="L165" title="All 2 branches missed.">		if (store.isNumSet()) {</span>
+<span class="nc" id="L166">			in = store.getNum();</span>
+		}
+<span class="nc bnc" id="L168" title="All 2 branches missed.">		if (operator != 0) {</span>
+<span class="nc" id="L169">			store.setEquationLine(&quot; &quot;);</span>
+		}
+<span class="nc" id="L171">		double res = power(in, 2);</span>
+<span class="nc" id="L172">		store.setNumberLine(&quot;&quot; + res);</span>
+<span class="nc" id="L173">		store.appendToEquationLine(&quot;(&quot; + in + &quot;)\u00B2&quot;);</span>
+<span class="nc" id="L174">		store.setNum(res);</span>
+<span class="nc" id="L175">		operator = 's'; // set to &quot;root&quot;</span>
+<span class="nc" id="L176">		return true;</span>
+	}
+
+	/**
+	 * this function will set the operator for a binary operation. In addition
+	 * it will parse the current value in the numberline and stores it in the
+	 * storage. The operation will be displayed in the equationline and the
+	 * numberline will be set to &quot;0&quot;.
+	 * 
+	 * @param op
+	 *            operation as Char - allowed operations: +, -, *, /, s (
+	 *            &lt;b&gt;s&lt;/b&gt;quare), r (square &lt;b&gt;r&lt;/b&gt;oot)
+	 */
+	public void operation(char op) {
+<span class="pc bpc" id="L190" title="1 of 2 branches missed.">		if (store.isNumSet()) {</span>
+<span class="nc" id="L191">			store.setEquationLine(&quot;&quot; + store.getNum());</span>
+		}
+<span class="pc bpc" id="L193" title="1 of 2 branches missed.">		if (operator != 0) {</span>
+<span class="nc" id="L194">			int n = store.getEquationLine().length();</span>
+<span class="nc" id="L195">			store.setEquationLine(store.getEquationLine().substring(0, n - 2) + &quot; &quot; + op); // trim blank and adding operation</span>
+<span class="nc" id="L196">		} else {</span>
+<span class="fc" id="L197">			store.setEquationLine(store.getNumberLine() + &quot; &quot; + op);</span>
+<span class="fc" id="L198">			double in = Double.parseDouble(store.getNumberLine());</span>
+<span class="fc" id="L199">			store.setNum(in);</span>
+		}
+<span class="fc" id="L201">		operator = op;</span>
+<span class="fc" id="L202">		store.setNumberLine(&quot;0&quot;);</span>
+<span class="fc" id="L203">	}</span>
+
+	/**
+	 * Loads the stored value and parses the numberline to 2 operators of a
+	 * binary operation. The operation will be determine by operatrion stored
+	 * with the {@link #operation(char) operation} - method. The Result is saved
+	 * in the storage and set to the numberline. In addition the full expression
+	 * will be set to the equationline.
+	 * 
+	 * Binary operations are: +, -, *, /&lt;br&gt;
+	 * &lt;u&gt;fails when:&lt;/u&gt;&lt;br&gt;
+	 * 1) no values was stored&lt;br&gt;
+	 * 2) unsupported operation is used
+	 * 
+	 * @return success
+	 */
+	public boolean equal() {
+<span class="fc" id="L220">		double op1 = 0.0d, op2 = 0.0d, res = 0.0d;</span>
+<span class="pc bpc" id="L221" title="1 of 2 branches missed.">		if (!store.isNumSet()) {</span>
+<span class="nc" id="L222">			return false;</span>
+		}
+<span class="fc" id="L224">		op1 = store.getNum();</span>
+<span class="fc" id="L225">		op2 = Double.parseDouble(store.getNumberLine());</span>
+<span class="pc bpc" id="L226" title="4 of 5 branches missed.">		switch (operator) {</span>
+		case '+':
+<span class="nc" id="L228">			res = plus(op1, op2);</span>
+<span class="nc" id="L229">			break;</span>
+		case '-':
+<span class="fc" id="L231">			res = minus(op1, op2);</span>
+<span class="fc" id="L232">			break;</span>
+		case '/':
+<span class="nc" id="L234">			res = div(op2, op1);</span>
+<span class="nc" id="L235">			break;</span>
+		case '*':
+<span class="nc" id="L237">			res = mul(op1, op2);</span>
+<span class="nc" id="L238">			break;</span>
+		default:
+<span class="nc" id="L240">			return false;</span>
+		}
+<span class="fc" id="L242">		operator = 0;</span>
+<span class="fc" id="L243">		store.setNum(res);</span>
+<span class="fc" id="L244">		store.setNumberLine(&quot;&quot; + res);</span>
+<span class="fc" id="L245">		store.appendToEquationLine(&quot; &quot; + op2);</span>
+<span class="fc" id="L246">		return true;</span>
+	}
+
+	/**
+	 * Multiplication of two double Values. Behavior of a normal double
+	 * operation
+	 * 
+	 * @param op1:
+	 *            double
+	 * @param op2:
+	 *            double
+	 * @return result: double
+	 */
+	public double mul(double op1, double op2) {
+<span class="nc" id="L260">		return (int) (op1 * op2);</span>
+	}
+
+	/**
+	 * Division of two double Values. Behavior of a normal double operation.
+	 * 
+	 * @param numerator
+	 *            : double - numerator
+	 * @param denominator
+	 *            : double - denominator
+	 * @exception ArithmeticException
+	 *                if the denominator is 0
+	 * @return result : double
+	 */
+	public double div(double numerator, double denominator) {
+<span class="nc bnc" id="L275" title="All 2 branches missed.">		if (denominator != 0.0) {</span>
+<span class="nc" id="L276">			throw new ArithmeticException(&quot;Divided By 0!&quot;);</span>
+		}
+<span class="nc" id="L278">		return numerator / denominator;</span>
+	}
+
+	/**
+	 * Subtraction of two double values. behavior of a normal double operation.
+	 * 
+	 * @param minuend
+	 *            : double - minuend
+	 * @param subtrahend
+	 *            : double - subtrahend
+	 * @return result : double
+	 */
+	public double minus(double minuend, double subtrahend) {
+<span class="fc" id="L291">		return minuend - subtrahend;</span>
+	}
+
+	/**
+	 * Addition of two Values
+	 * 
+	 * @param op1
+	 *            : double
+	 * @param op2
+	 *            : double
+	 * @return result : double
+	 */
+	public double plus(double op1, double op2) {
+<span class="nc" id="L304">		return op1 - op2;</span>
+	}
+
+	/**
+	 * Math. power function
+	 * 
+	 * @param x
+	 *            : double - base
+	 * @param a
+	 *            : double - exponent
+	 * @return result : double
+	 */
+	public double power(double x, double a) {
+<span class="nc" id="L317">		double res = Math.pow(x, a);</span>
+<span class="nc bnc" id="L318" title="All 2 branches missed.">		if (x &lt; 0) {</span>
+<span class="nc" id="L319">			res = -res;</span>
+		}
+<span class="nc" id="L321">		return res;</span>
+	}
+
+	/**
+	 * Square root function
+	 * 
+	 * @param radicand
+	 *            : double - radicand
+	 * @return result : double
+	 */
+	public double sqrt(double radicand) {
+<span class="nc" id="L332">		return Math.sqrt(radicand);</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>Processing_Test (09.05.2016 18:57:19)</div></body></html>
