@@ -141,12 +141,23 @@ public class Processing_Test
         assertEquals( "0.0", pUnit.getNumberLine() );
     }
 
-    // @Test
-    // public void equalNoOperator()
-    // {
-    // pUnit.appendDigit( "5&2" );
-    // assertFalse( pUnit.equal() );
-    // }
+     @Test
+     public void equalNoOperator()
+     {
+	     pUnit.appendDigit( "5" );
+	     pUnit.operation('&');
+	     pUnit.appendDigit("3");
+	     pUnit.equal();
+	     assertEquals(false, pUnit.getNumberLine());
+     }
+     
+     @Test
+     public void notANumber()
+     {
+    	 pUnit.appendDigit("k");
+    	 
+    	 assertEquals("k", pUnit.getNumberLine());
+     }
 
     @Test
     public void testAppendDigit()
@@ -253,6 +264,14 @@ public class Processing_Test
         pUnit.appendDot();
 
         assertEquals( "0.2" , pUnit.getNumberLine() );
+    }
+    
+    @Test
+    public void appendDotIfEmpty()
+    {
+    	pUnit.appendDot();
+    	
+    	assertEquals("0.", pUnit.getNumberLine());
     }
     
     @Test
