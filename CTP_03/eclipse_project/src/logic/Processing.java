@@ -3,7 +3,7 @@ package logic;
 /**
  * Processing class manages all computational logic for the Certified Tester
  * Calculator This class acts as a controller in a MVC - fashion
- * 
+ *
  * @author gOAT
  *
  */
@@ -16,7 +16,7 @@ public class Processing {
 
 	/**
 	 * Processing needs an Storage Object to save calculated Data
-	 * 
+	 *
 	 * @param store
 	 *            Storage Object
 	 */
@@ -26,7 +26,7 @@ public class Processing {
 
 	/**
 	 * Returns the NumberLine
-	 * 
+	 *
 	 * @return returns numberline as String
 	 */
 	public String getNumberLine() {
@@ -35,7 +35,7 @@ public class Processing {
 
 	/**
 	 * Returns the EquationLine
-	 * 
+	 *
 	 * @return returns equationlineas String
 	 */
 	public String getEquationLine() {
@@ -49,7 +49,7 @@ public class Processing {
 	 * 1) Length of Numberline is greater than MAXDIGITS(21) <br>
 	 * 2) Numline == "0" and "0" is entered. 3) If length of <b>in</b> is
 	 * greater than 1
-	 * 
+	 *
 	 * @param in
 	 *            Digit to append Numberline
 	 * @return true - String appended, false - nothing changed
@@ -74,11 +74,11 @@ public class Processing {
 
 	/**
 	 * Appends a Dot to the Numberline, if possible<br>
-	 * 
+	 *
 	 * <u>Rules for failure:</u><br>
 	 * 1) Length of Numberline is greater than MAXDIGITS(21) <br>
 	 * 2) Last "digit" is a dot. No Multiple dots! Digit to append Numberline
-	 * 
+	 *
 	 * @return true - dot appended, false - nothing changed
 	 */
 	public boolean appendDot() {
@@ -95,7 +95,7 @@ public class Processing {
 
 	/**
 	 * Clears all stored data: Invokes clear() on Storage object
-	 * 
+	 *
 	 * @see Storage
 	 */
 	public void clear() {
@@ -128,7 +128,7 @@ public class Processing {
 	 * squreroot sign with the radicand will be displayed in the equationline.
 	 * <u>fails when:</u><br>
 	 * radicand less than 0
-	 * 
+	 *
 	 * @return true - Update GUI. false - no update necessary
 	 */
 	public boolean sqrt() {
@@ -157,11 +157,12 @@ public class Processing {
 	 * set to the numberline and stored in the storage. The equationline will
 	 * display the input with a power of 2 sign. In addition the numberline will
 	 * display the result of the operation.
-	 * 
+	 *
 	 * @return GUI update - false, no update is necessary.
 	 */
 	public boolean pow() {
 		double in = Double.parseDouble(store.getNumberLine());
+		// Folgende zwei Brachnes fehlerhaft, nicht testen!
 		if (store.isNumSet()) {
 			in = store.getNum();
 		}
@@ -181,7 +182,7 @@ public class Processing {
 	 * it will parse the current value in the numberline and stores it in the
 	 * storage. The operation will be displayed in the equationline and the
 	 * numberline will be set to "0".
-	 * 
+	 *
 	 * @param op
 	 *            operation as Char - allowed operations: +, -, *, /, s (
 	 *            <b>s</b>quare), r (square <b>r</b>oot)
@@ -208,12 +209,12 @@ public class Processing {
 	 * with the {@link #operation(char) operation} - method. The Result is saved
 	 * in the storage and set to the numberline. In addition the full expression
 	 * will be set to the equationline.
-	 * 
+	 *
 	 * Binary operations are: +, -, *, /<br>
 	 * <u>fails when:</u><br>
 	 * 1) no values was stored<br>
 	 * 2) unsupported operation is used
-	 * 
+	 *
 	 * @return success
 	 */
 	public boolean equal() {
@@ -249,7 +250,7 @@ public class Processing {
 	/**
 	 * Multiplication of two double Values. Behavior of a normal double
 	 * operation
-	 * 
+	 *
 	 * @param op1:
 	 *            double
 	 * @param op2:
@@ -262,7 +263,7 @@ public class Processing {
 
 	/**
 	 * Division of two double Values. Behavior of a normal double operation.
-	 * 
+	 *
 	 * @param numerator
 	 *            : double - numerator
 	 * @param denominator
@@ -280,7 +281,7 @@ public class Processing {
 
 	/**
 	 * Subtraction of two double values. behavior of a normal double operation.
-	 * 
+	 *
 	 * @param minuend
 	 *            : double - minuend
 	 * @param subtrahend
@@ -293,7 +294,7 @@ public class Processing {
 
 	/**
 	 * Addition of two Values
-	 * 
+	 *
 	 * @param op1
 	 *            : double
 	 * @param op2
@@ -306,7 +307,7 @@ public class Processing {
 
 	/**
 	 * Math. power function
-	 * 
+	 *
 	 * @param x
 	 *            : double - base
 	 * @param a
@@ -323,7 +324,7 @@ public class Processing {
 
 	/**
 	 * Square root function
-	 * 
+	 *
 	 * @param radicand
 	 *            : double - radicand
 	 * @return result : double
