@@ -128,7 +128,10 @@ public class Processing_Test
     {
         pUnit.appendDigit( "2" );
         pUnit.pow();
+        
+        assertEquals("4", store.getNumberLine());
         assertEquals( "4", pUnit.getNumberLine() );
+        assertEquals("(" + 2 + ")\u00B2", pUnit.getEquationLine());
     }
 
     @Test
@@ -148,10 +151,31 @@ public class Processing_Test
     @Test
     public void testAppendDigit()
     {
-        String testeingabe = "2222222222222222222222";
+    	 pUnit.appendDigit( "2" );
+         pUnit.appendDigit( "2" );
+         pUnit.appendDigit( "2" );
+         pUnit.appendDigit( "2" );
+         pUnit.appendDigit( "2" );
+         pUnit.appendDigit( "2" );
+         pUnit.appendDigit( "2" );
+         pUnit.appendDigit( "2" );
+         pUnit.appendDigit( "2" );
+         pUnit.appendDigit( "2" );
+         pUnit.appendDigit( "2" );
+         pUnit.appendDigit( "2" );
+         pUnit.appendDigit( "2" );
+         pUnit.appendDigit( "2" );
+         pUnit.appendDigit( "2" );
+         pUnit.appendDigit( "2" );
+         pUnit.appendDigit( "2" );
+         pUnit.appendDigit( "2" );
+         pUnit.appendDigit( "2" );
+         pUnit.appendDigit( "2" );
+         pUnit.appendDigit( "2" );
+      //   String testeingabe = pUnit.getNumberLine();
         int expected = 21;
 
-        pUnit.appendDigit( testeingabe );
+       // pUnit.appendDigit( testeingabe );
         assertEquals( pUnit.getNumberLine().length(), expected );
     }
 
@@ -167,11 +191,58 @@ public class Processing_Test
     {
         pUnit.appendDot();
 
-        pUnit.appendDigit( "2222222222222222222222" );
+        pUnit.appendDigit( "2" );
+        pUnit.appendDigit( "2" );
+        pUnit.appendDigit( "2" );
+        pUnit.appendDigit( "2" );
+        pUnit.appendDigit( "2" );
+        pUnit.appendDigit( "2" );
+        pUnit.appendDigit( "2" );
+        pUnit.appendDigit( "2" );
+        pUnit.appendDigit( "2" );
+        pUnit.appendDigit( "2" );
+        pUnit.appendDigit( "2" );
+        pUnit.appendDigit( "2" );
+        pUnit.appendDigit( "2" );
+        pUnit.appendDigit( "2" );
+        pUnit.appendDigit( "2" );
+        pUnit.appendDigit( "2" );
+        pUnit.appendDigit( "2" );
+        pUnit.appendDigit( "2" );
+        pUnit.appendDigit( "2" );
+        pUnit.appendDigit( "2" );
+        pUnit.appendDigit( "2" );
         pUnit.appendDot();
         assertFalse( ( "" + ( pUnit
                 .getNumberLine().charAt( pUnit.getNumberLine().length() - 1 ) ) )
                         .equals( "." ) );
+    }
+    
+    @Test
+    public void divZero()
+    {
+    	pUnit.div(6.0, 2.0);
+    	
+    	assertEquals(3.0, pUnit.getNumberLine());
+    }
+    
+    @Test
+    public void negativeBasePower()
+    {
+    	pUnit.power(-2.0, 2);
+    	
+    	assertEquals("4", pUnit.getNumberLine());
+    }
+    
+    @Test
+    public void negativePow()
+    {
+    	pUnit.appendDigit("5");
+    	pUnit.operation('-');
+    	pUnit.appendDigit("7");
+    	pUnit.pow();
+    	
+    	assertEquals("4", pUnit.getNumberLine());
     }
 
     @Test
@@ -182,5 +253,115 @@ public class Processing_Test
         pUnit.appendDot();
 
         assertEquals( "0.2" , pUnit.getNumberLine() );
+    }
+    
+    @Test
+    public void equationLine()
+    {
+    	pUnit.appendDigit("5");
+    	pUnit.operation('-');
+    	pUnit.appendDigit("5");
+    	pUnit.equal();
+    	
+    	assertEquals("5-5", pUnit.getEquationLine());
+    }
+    
+    @Test
+    public void maxDigits()
+    {
+    	// ein Zeichen zu viel? oder dürfen 22?
+    	pUnit.appendDigit("2");
+    	pUnit.appendDigit("2");
+    	pUnit.appendDigit("2");
+    	pUnit.appendDigit("2");
+    	pUnit.appendDigit("2");
+    	pUnit.appendDigit("2");
+    	pUnit.appendDigit("2");
+    	pUnit.appendDigit("2");
+    	pUnit.appendDigit("2");
+    	pUnit.appendDigit("2");
+    	pUnit.appendDigit("2");
+    	pUnit.appendDigit("2");
+    	pUnit.appendDigit("2");
+    	pUnit.appendDigit("2");
+    	pUnit.appendDigit("2");
+    	pUnit.appendDigit("2");
+    	pUnit.appendDigit("2");
+    	pUnit.appendDigit("2");
+    	pUnit.appendDigit("2");
+    	pUnit.appendDigit("2");
+    	pUnit.appendDigit("2");
+    	pUnit.appendDigit("2");
+    	assertEquals(false, pUnit.appendDigit("2"));
+    	
+    }
+    
+    @Test 
+    public void clearProcessing()
+    {
+    	pUnit.appendDigit("2");
+    	pUnit.appendDigit("2");
+    	pUnit.clear();
+    	
+    	assertEquals("0", pUnit.getNumberLine());
+    }
+    
+    @Test
+    public void backspaceToEmpty()
+    {
+    	pUnit.appendDigit("2");
+    	pUnit.backspace();
+    	
+    	assertEquals("0", pUnit.getNumberLine());
+    }
+    
+    @Test 
+    public void backspaceWith2Digits()
+    {
+    	pUnit.appendDigit("2");
+    	pUnit.appendDigit("2");
+    	pUnit.backspace();
+    	
+    	assertEquals(1, pUnit.getNumberLine().length());
+    }
+    
+    @Test 
+    public void sqrtWithRadicand()
+    {
+    	pUnit.appendDigit("4");
+    	pUnit.sqrt(2.0);
+    	
+    	assertEquals("2", pUnit.getNumberLine());
+    	
+    }
+    
+    @Test 
+    public void sqrt()
+    {
+    	pUnit.appendDigit("4");
+    	pUnit.sqrt();
+    	
+    	assertEquals("2", pUnit.getNumberLine());
+    	assertEquals("\u221A(" + 2 + ")", pUnit.getEquationLine());
+    }
+    
+    @Test 
+    public void negativeSqrt()
+    {
+    	pUnit.appendDigit("1");
+    	pUnit.operation('-');
+    	pUnit.appendDigit("3");
+    	
+    	pUnit.sqrt();
+    	
+    	assertEquals(false, pUnit.getNumberLine());
+    }
+ 
+    @Test 
+    public void getNumberLine()
+    {
+    	pUnit.appendDigit("2");
+    	
+    	assertEquals("2", pUnit.getNumberLine());
     }
 }
