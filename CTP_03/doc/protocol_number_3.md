@@ -1,7 +1,7 @@
 # CTP-03
 ## Aufgabe 1
 ### Aufgabe 1.1: Analyse der Ausgangssituation
-* Analyse Klassen _processing_ und _storage_ uf Codecoverage
+* Analyse Klassen _processing_ und _storage_ auf Codecoverage
 * Coverage Report mit EclEmma erstellen und erläutern
 
 * Erläuterungen:
