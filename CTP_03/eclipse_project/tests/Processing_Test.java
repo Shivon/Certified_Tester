@@ -344,6 +344,19 @@ public class Processing_Test
     	assertEquals(1, pUnit.getNumberLine().length());
     }
     
+    @Test
+    public void backspaceDouble()
+    {
+    	pUnit.appendDigit("5");
+    	pUnit.operation('-');
+    	pUnit.appendDigit("2");
+    	pUnit.equal();
+    	pUnit.backspace();
+    	
+    	assertEquals("3.", pUnit.getNumberLine());
+  
+    }
+    
     @Test 
     public void sqrtWithRadicand()
     {
