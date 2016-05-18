@@ -1,9 +1,7 @@
 import java.io.Console;
 import java.util.Arrays;
 
-/**
- * Created by marjan on 18.05.16.
- */
+
 public class TruthTableBeta {
     private int rowCount;
     private int columnCount;
@@ -53,6 +51,44 @@ public class TruthTableBeta {
         System.out.println("------------------------------------------------------");
         System.out.println(toBinaryString(resultArray));
     }
+
+    // Getter
+
+    public boolean[][] getInputMatrice() {
+        return inputMatrice;
+    }
+
+    public boolean[] getResultVector() {
+        return resultArray;
+    }
+
+    public boolean[] getRow(int row) {
+        return inputMatrice[row];
+    }
+
+    public boolean getCell(int row, int column) {
+        return inputMatrice[row][column];
+    }
+
+    // Setter
+
+    public void setInputMatrice(boolean[][] matrice) {
+        inputMatrice = matrice;
+    }
+
+    public void setResultVector(boolean[] result) {
+        resultArray = result;
+    }
+
+    public void setRow(int rowNumber, boolean[] rowContent) {
+        inputMatrice[rowNumber] = rowContent;
+    }
+
+    public void setCell(int row, int column, boolean value) {
+        inputMatrice[row][column] = value;
+    }
+
+    // Private methods
 
     private String toBinaryString(boolean[] row) {
         String rowString = Arrays.toString(row);
