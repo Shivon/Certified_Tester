@@ -58,7 +58,7 @@ public class Processing {
 		if (in.length() > 1) {
 			return false;
 		}
-		if (store.getNumberLine().length() > MAXDIGITS) {
+		if (store.getNumberLine().length() >= MAXDIGITS) {
 			return false;
 		}
 		if (store.getNumberLine().equals("0")) {
@@ -83,12 +83,12 @@ public class Processing {
 	 */
 	public boolean appendDot() {
 		int n = store.getNumberLine().length();
-		if (n > MAXDIGITS - 1 || store.getNumberLine().charAt(n - 1) == '.') { // last Digit can't be a dot
+		if (n > MAXDIGITS - 1 || store.getNumberLine().contains(".")) { // last Digit can't be a dot
 			return false;
 		}
-		if (n < 1) {
-			store.appendToNumberLine("0");
-		}
+//		if (n < 1) {
+//			store.appendToNumberLine("0");
+//		}
 		store.appendToNumberLine(".");
 		return true;
 	}
@@ -100,7 +100,7 @@ public class Processing {
 	 */
 	public void clear() {
 		store.clear();
-		store = null;
+//		store = null;
 		operator = 0;
 	}
 
@@ -133,19 +133,20 @@ public class Processing {
 	 */
 	public boolean sqrt() {
 		double in = Double.parseDouble(store.getNumberLine());
-		Storage store = new Storage();
-		if (store.isNumSet()) {
-			in = store.getNum();
-		}
-		if (operator != 0) {
-			store.setEquationLine(" ");
-		}
+//		Storage store = new Storage();
+//		if (store.isNumSet()) {
+//			in = store.getNum();
+//		}
+//		if (operator != 0) {
+//			store.setEquationLine("");
+//		}
 		if (in > 0) {
 			double res = sqrt(in);
-			store.setEquationLine("\u221A(" + in + ")");
 			store.setNumberLine("" + res);
+			store.appendToEquationLine("\u221A(" + in + ")");
 			store.setNum(res);
 			operator = 'r'; // set to "root"
+			
 		} else {
 			return false;
 		}
@@ -163,12 +164,12 @@ public class Processing {
 	public boolean pow() {
 		double in = Double.parseDouble(store.getNumberLine());
 		// Folgende zwei Brachnes fehlerhaft, nicht testen!
-		if (store.isNumSet()) {
-			in = store.getNum();
-		}
-		if (operator != 0) {
-			store.setEquationLine(" ");
-		}
+//		if (store.isNumSet()) {
+//			in = store.getNum();
+//		}
+//		if (operator != 0) {
+//			store.setEquationLine(" ");
+//		}
 		double res = power(in, 2);
 		store.setNumberLine("" + res);
 		store.appendToEquationLine("(" + in + ")\u00B2");
@@ -192,15 +193,25 @@ public class Processing {
 			store.setEquationLine("" + store.getNum());
 		}
 		if (operator != 0) {
-			int n = store.getEquationLine().length();
-			store.setEquationLine(store.getEquationLine().substring(0, n - 2) + " " + op); // trim blank and adding operation
+			
+//			int n = store.getEquationLine().length();
+//			store.setEquationLine(store.getEquationLine().substring(0, n - 2) + "" + op); // trim blank and adding operation
+			equal();
+//			store.setNum();
+	
+			store.setEquationLine(getNumberLine());
+//			store.appendToEquationLine(getNumberLine());
+			store.appendToEquationLine(String.valueOf(op));
+			operator = op;
+			store.setNumberLine("0");
 		} else {
-			store.setEquationLine(store.getNumberLine() + " " + op);
+			store.setEquationLine(store.getNumberLine() + "" + op);
 			double in = Double.parseDouble(store.getNumberLine());
 			store.setNum(in);
+			operator = op;
+			store.setNumberLine("0");
 		}
-		operator = op;
-		store.setNumberLine("0");
+		
 	}
 
 	/**
@@ -232,18 +243,18 @@ public class Processing {
 			res = minus(op1, op2);
 			break;
 		case '/':
-			res = div(op2, op1);
+			res = div(op1, op2);
 			break;
 		case '*':
 			res = mul(op1, op2);
 			break;
 		default:
-			return false;
+			return false; 
 		}
 		operator = 0;
 		store.setNum(res);
 		store.setNumberLine("" + res);
-		store.appendToEquationLine(" " + op2);
+		store.appendToEquationLine("" + op2);
 		return true;
 	}
 
@@ -273,10 +284,10 @@ public class Processing {
 	 * @return result : double
 	 */
 	public double div(double numerator, double denominator) {
-		if (denominator != 0.0) {
-			throw new ArithmeticException("Divided By 0!");
-		}
-		return numerator / denominator;
+//		if (denominator == 0.0) {
+//			throw new ArithmeticException("Divided By 0!");
+//		}
+		return (numerator / denominator);
 	}
 
 	/**
@@ -302,7 +313,7 @@ public class Processing {
 	 * @return result : double
 	 */
 	public double plus(double op1, double op2) {
-		return op1 - op2;
+		return op1 + op2;
 	}
 
 	/**
@@ -316,9 +327,9 @@ public class Processing {
 	 */
 	public double power(double x, double a) {
 		double res = Math.pow(x, a);
-		if (x < 0) {
-			res = -res;
-		}
+//		if (x < 0) {
+//			res = -res;
+//		}
 		return res;
 	}
 
