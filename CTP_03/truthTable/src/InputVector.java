@@ -22,7 +22,7 @@ public class InputVector extends ArrayList {
         for (int i = 0; i < stringArray.length; i++) {
             int value = Integer.parseInt(stringArray[i]);
 
-            if (allowedValues != null && !Arrays.asList(allowedValues).contains(value)) {
+            if (allowedValues != null && !hasAllowedValue(value)) {
                 System.err.println("Your input values are invalid.");
                 System.exit(1);
             }
@@ -33,15 +33,32 @@ public class InputVector extends ArrayList {
         return vector;
     }
 
+    private boolean hasAllowedValue(int integer) {
+        int index = Arrays.binarySearch(allowedValues, integer);
+        return index >= 0;
+    }
+
     public int[] getVector() {
         return vector;
     }
 
-    public void onlyAllowValues(int[] values) {
-        int length = values.length;
-        allowedValues = new int[length];
-        allowedValues = Arrays.copyOf(values, length);
+    public int[] getAllowedValues() {
+        return allowedValues;
     }
+
+    public void onlyAllowValues(int[] values) {
+        allowedValues = values;
+        Arrays.sort(allowedValues);
+    }
+
+    public String vectorAsString() {
+        return Arrays.toString(vector);
+    }
+
+    public String allowedValuesAsString() {
+        return Arrays.toString(allowedValues);
+    }
+
 
 //    public InputVector(int[] intArray, int[] validValues) {
 //        TODO if wanted
