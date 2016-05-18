@@ -27,5 +27,9 @@ public class Main {
         int columns = Integer.parseInt(numberOfColumns);
         TruthTableBeta beta = new TruthTableBeta(rows, columns, console);
         beta.fillTable();
+        System.out.println("\n");
+        beta.printTable();
+        System.out.println("\n");
+        beta.printTableBinary();
     }
 }

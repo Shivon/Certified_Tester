@@ -38,6 +38,27 @@ public class TruthTableBeta {
         System.out.println("Result row: " + Arrays.toString(resultArray));
     }
 
+    public void printTable() {
+        for (int row = 0; row < rowCount; row++) {
+            System.out.println(Arrays.toString(inputMatrice[row]));
+        }
+        System.out.println("------------------------------------------------------");
+        System.out.println(Arrays.toString(resultArray));
+    }
+
+    public void printTableBinary() {
+        for (int row = 0; row < rowCount; row++) {
+            System.out.println(toBinaryString(inputMatrice[row]));
+        }
+        System.out.println("------------------------------------------------------");
+        System.out.println(toBinaryString(resultArray));
+    }
+
+    private String toBinaryString(boolean[] row) {
+        String rowString = Arrays.toString(row);
+        return rowString.replace("false", "0").replace("true", "1").replace(",", "");
+    }
+
     private boolean parseBoolFromString(String string) {
         string = string.replace(" ", "").toLowerCase();
 
