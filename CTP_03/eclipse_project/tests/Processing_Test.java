@@ -120,7 +120,7 @@ public class Processing_Test
         pUnit.appendDigit( "5" );
         pUnit.equal();
 
-        assertEquals( "125", pUnit.getNumberLine() );
+        assertEquals( "125.0", pUnit.getNumberLine() );
     }
 
     @Test
@@ -129,9 +129,9 @@ public class Processing_Test
         pUnit.appendDigit( "2" );
         pUnit.pow();
         
-        assertEquals("4", store.getNumberLine());
-        assertEquals( "4", pUnit.getNumberLine() );
-        assertEquals("(" + 2 + ")\u00B2", pUnit.getEquationLine());
+        assertEquals("4.0", store.getNumberLine());
+        assertEquals( "4.0", pUnit.getNumberLine() );
+        assertEquals("(" + 2.0 + ")\u00B2", pUnit.getEquationLine());
     }
 
     @Test
@@ -147,8 +147,8 @@ public class Processing_Test
 	     pUnit.appendDigit( "5" );
 	     pUnit.operation('&');
 	     pUnit.appendDigit("3");
-	     pUnit.equal();
-	     assertEquals(false, pUnit.getNumberLine());
+	     
+	     assertEquals(false,pUnit.equal());
      }
      
      @Test
@@ -230,19 +230,23 @@ public class Processing_Test
     }
     
     @Test
-    public void divZero()
-    {
-    	pUnit.div(6.0, 2.0);
-    	
-    	assertEquals(3.0, pUnit.getNumberLine());
+    public void div()
+    {   	
+    	assertEquals("3.0", "" + pUnit.div(6.0, 2.0));
     }
+    
+//    @Test
+//    public void divByZero()
+//    {
+//    	pUnit.div(6.0, 0.0);
+//    	
+//    	assertEquals(ArithmeticException("Divided By 0!"), pUnit.getNumberLine());
+//    }
     
     @Test
     public void negativeBasePower()
     {
-    	pUnit.power(-2.0, 2);
-    	
-    	assertEquals("4", pUnit.getNumberLine());
+    	assertEquals("4.0", ""+pUnit.power(-2.0, 2));
     }
     
     @Test
@@ -250,10 +254,11 @@ public class Processing_Test
     {
     	pUnit.appendDigit("5");
     	pUnit.operation('-');
-    	pUnit.appendDigit("7");
+    	pUnit.appendDigit("8");
+    	pUnit.equal();
     	pUnit.pow();
     	
-    	assertEquals("4", pUnit.getNumberLine());
+    	assertEquals("9.0", pUnit.getNumberLine());
     }
 
     @Test
@@ -282,7 +287,7 @@ public class Processing_Test
     	pUnit.appendDigit("5");
     	pUnit.equal();
     	
-    	assertEquals("5-5", pUnit.getEquationLine());
+    	assertEquals("5-5.0", pUnit.getEquationLine());
     }
     
     @Test
@@ -344,13 +349,25 @@ public class Processing_Test
     	assertEquals(1, pUnit.getNumberLine().length());
     }
     
+    @Test
+    public void backspaceDouble()
+    {
+    	pUnit.appendDigit("5");
+    	pUnit.operation('-');
+    	pUnit.appendDigit("2");
+    	pUnit.equal();
+    	pUnit.backspace();
+    	
+    	assertEquals("3.", pUnit.getNumberLine());
+  
+    }
+    
     @Test 
     public void sqrtWithRadicand()
     {
-    	pUnit.appendDigit("4");
-    	pUnit.sqrt(2.0);
+//    	pUnit.appendDigit("4");
     	
-    	assertEquals("2", pUnit.getNumberLine());
+    	assertEquals("2.0",""+pUnit.sqrt(4.0));
     	
     }
     
@@ -360,8 +377,8 @@ public class Processing_Test
     	pUnit.appendDigit("4");
     	pUnit.sqrt();
     	
-    	assertEquals("2", pUnit.getNumberLine());
-    	assertEquals("\u221A(" + 2 + ")", pUnit.getEquationLine());
+    	assertEquals("2.0", pUnit.getNumberLine());
+    	assertEquals("\u221A(" + 4.0 + ")", pUnit.getEquationLine());
     }
     
     @Test 
@@ -370,10 +387,9 @@ public class Processing_Test
     	pUnit.appendDigit("1");
     	pUnit.operation('-');
     	pUnit.appendDigit("3");
+    	pUnit.equal();
     	
-    	pUnit.sqrt();
-    	
-    	assertEquals(false, pUnit.getNumberLine());
+    	assertEquals(false, pUnit.sqrt());
     }
  
     @Test 

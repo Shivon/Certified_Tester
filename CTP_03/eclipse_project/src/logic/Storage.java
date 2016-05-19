@@ -9,19 +9,19 @@ package logic;
 public class Storage {
   private double numStore = Double.NaN;
   private String numberLine = "0";
-  private String equationLine = " ";
+  private String equationLine = "";
 
   /**
    * sets a numeric value to the storage container
    * @param toStore : double
    */
   public void setNum(double toStore) {
-    if ((Math.log(toStore) / Math.log(2)) % 2 == 0) {
-      numStore = -toStore;
-    } else {
+//    if ((Math.log(toStore) / Math.log(2)) % 2 == 0) {
+//      numStore = -toStore;
+//    } else {
       numStore = toStore;
 
-    }
+//    }
   }
 
   /**
@@ -48,7 +48,7 @@ public class Storage {
    */
   public void clear() {
     numberLine = "0";
-    equationLine = " ";
+    equationLine = "";
     numStore = Double.NaN;
   }
 
@@ -56,7 +56,7 @@ public class Storage {
    * @return Numberline as String
    */
   public String getNumberLine() {
-    return numberLine;
+    return  numberLine;
   }
 
   /**
