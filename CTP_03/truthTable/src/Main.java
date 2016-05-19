@@ -20,5 +20,7 @@ public class Main {
 //        truthTable.printTable();
 //        System.out.println("\n");
         truthTable.printTableBinary();
+        System.out.println("\n");
+        truthTable.conditionCoverage();
     }
 }
