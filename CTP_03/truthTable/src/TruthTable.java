@@ -20,20 +20,20 @@ public class TruthTable {
         this.resultArray = new boolean[rowCount];
         this.conditionNames = new String[columnCount];
 //
-//        this.inputMatrice = new boolean[][]{
-//                {false, false, false},
-//                {false, true, false},
-//                {false, true, false},
-//                {false, true, true},
-//                {true, true, true},
-//                {true, true, true}
-//        };
-//        this.resultArray = new boolean[] {
-//                false, true, false, true, false, true
-//        };
-//        this.conditionNames = new String[] {
-//                "A", "B", "C"
-//        };
+//       this.inputMatrice = new boolean[][]{
+//               {false, false, false},
+//               {false, true, false},
+//               {false, true, false},
+//               {false, true, true},
+//               {true, true, true},
+//               {true, true, true}
+//       };
+//       this.resultArray = new boolean[] {
+//               false, true, false, true, false, true
+//       };
+//       this.conditionNames = new String[] {
+//               "A", "B", "C"
+//       };
     }
 
     public void fillTable() {
@@ -93,7 +93,6 @@ public class TruthTable {
         for (String condition : conditionNames) {
             toggledConditions.put(condition, new ArrayList());
         }
-        toggledConditions.put("result", new ArrayList());
 
         for (int row = 0; row < rowCount; row++) {
             for (int column = 0; column < columnCount; column++) {
@@ -124,6 +123,48 @@ public class TruthTable {
         System.out.println("Decision coverage reached? " + decisionCoverageReached(toggledConditionsResult));
 
         return result;
+    }
+
+    public HashMap<Integer, ArrayList> minimalMultipleConditionCoverage() {
+        HashMap<Integer, ArrayList> testCases = new HashMap<>();
+        Set<Integer> indicesOfTestCases = new LinkedHashSet<>();
+
+
+        for (int row = 0; row < rowCount; row++) {
+            boolean[] currentVector = inputMatrice[row];
+
+            for (int rowNeighbour = 0; rowNeighbour < rowCount; rowNeighbour++) {
+                boolean[] potentialNeighbour = inputMatrice[rowNeighbour];
+
+                if (areNeighbours(currentVector, potentialNeighbour) && differentResultValues(row, rowNeighbour)) {
+                    indicesOfTestCases.add(row);
+                    indicesOfTestCases.add(rowNeighbour);
+                }
+            }
+        }
+
+        System.out.println("Test cases for minimal multiple condition coverage: ");
+        for (Integer index : indicesOfTestCases) {
+            testCases.put(index, new ArrayList(Arrays.asList(inputMatrice[index])));
+            System.out.println("Index of vector: " + index + ", test case: "+ toBinaryString(inputMatrice[index]) + ", result: "+ toBinaryString(resultArray[index]));
+        }
+
+        return testCases;
+    }
+
+    public boolean areNeighbours(boolean[] vector1, boolean[] vector2) {
+        for (int column = 0; column < columnCount; column++) {
+            vector1[column] = !vector1[column];
+
+            if (Arrays.equals(vector1, vector2)) {
+                vector1[column] = !vector1[column];
+                return true;
+            }
+
+            vector1[column] = !vector1[column];
+        }
+
+        return false;
     }
 
     // Getter
@@ -206,5 +247,9 @@ public class TruthTable {
     // TODO: check if we should only check it or guarantee that decision coverage is reached
     private boolean decisionCoverageReached(Set<Boolean> toggledValues) {
         return (toggledValues.contains(true) && toggledValues.contains(false));
+    }
+
+    private boolean differentResultValues(int index1, int index2) {
+        return (resultArray[index1] != resultArray[index2]);
     }
 }
