@@ -3,6 +3,12 @@ import java.io.Console;
 public class Main {
     public static void main(String[] args) {
         Console console = System.console();
+
+        if (console == null) {
+            System.err.println("No console available, use bash if not already or configure your IDE.");
+            System.exit(1);
+        }
+
         System.out.println("Welcome to truth table viewer!");
         String numberOfColumns = console.readLine("Enter the number of atomic conditions your table will have (columns): ");
         int columns = Integer.parseInt(numberOfColumns);
