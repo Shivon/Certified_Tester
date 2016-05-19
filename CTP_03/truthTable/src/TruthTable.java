@@ -7,36 +7,29 @@ public class TruthTable {
     // rows = all values for one variable
     private int rowCount;
     private int columnCount;
-    private boolean[][] inputMatrice;
+    private boolean[][] inputMatrix;
     private boolean[] resultArray;
     private String[] conditionNames;
     private Console console;
+
+    public TruthTable(String[] conditionNames, boolean[][] inputMatrix, boolean[] resultArray) {
+        this.rowCount = inputMatrix.length;
+        this.columnCount = inputMatrix[0].length;
+        this.inputMatrix = inputMatrix;
+        this.resultArray = resultArray;
+        this.conditionNames = conditionNames;
+    }
 
     public TruthTable(int rowCount, int columnCount, Console console) {
         this.rowCount = rowCount;
         this.columnCount = columnCount;
         this.console = console;
-        this.inputMatrice = new boolean[rowCount][columnCount];
+        this.inputMatrix = new boolean[rowCount][columnCount];
         this.resultArray = new boolean[rowCount];
         this.conditionNames = new String[columnCount];
-//
-//       this.inputMatrice = new boolean[][]{
-//               {false, false, false},
-//               {false, true, false},
-//               {false, true, false},
-//               {false, true, true},
-//               {true, true, true},
-//               {true, true, true}
-//       };
-//       this.resultArray = new boolean[] {
-//               false, true, false, true, false, true
-//       };
-//       this.conditionNames = new String[] {
-//               "A", "B", "C"
-//       };
     }
 
-    public void fillTable() {
+    public void fillTableViaConsole() {
         // Define condition names
         for (int column = 0; column < columnCount; column++) {
             String var = console.readLine("Enter condition NAME for column " + column + ":  ");
@@ -49,9 +42,9 @@ public class TruthTable {
         for (int row = 0; row < rowCount; row++) {
             for (int column = 0; column < columnCount; column++) {
                 String value = console.readLine("Enter boolean value for condition (row) " + row + " and vector (column) " + column + ":  ");
-                inputMatrice[row][column] = parseBoolFromString(value);
+                inputMatrix[row][column] = parseBoolFromString(value);
             }
-            System.out.println("Condition (row) " + row + ": " + Arrays.toString(inputMatrice[row]));
+            System.out.println("Condition (row) " + row + ": " + Arrays.toString(inputMatrix[row]));
         }
 
         System.out.println("------------------------------------------------------");
@@ -69,7 +62,7 @@ public class TruthTable {
     public void printTable() {
         System.out.println(formatForPrint(Arrays.toString(conditionNames)));
         for (int row = 0; row < rowCount; row++) {
-            System.out.println(formatForPrint(Arrays.toString(inputMatrice[row])) + " | " + resultArray[row]);
+            System.out.println(formatForPrint(Arrays.toString(inputMatrix[row])) + " | " + resultArray[row]);
         }
     }
 
@@ -77,7 +70,7 @@ public class TruthTable {
     public void printTableBinary() {
         System.out.println(formatForPrint(Arrays.toString(conditionNames)));
         for (int row = 0; row < rowCount; row++) {
-            System.out.println(formatForPrint(toBinaryString(inputMatrice[row])) + " | " + toBinaryString(resultArray[row]));
+            System.out.println(formatForPrint(toBinaryString(inputMatrix[row])) + " | " + toBinaryString(resultArray[row]));
         }
     }
 
@@ -98,7 +91,7 @@ public class TruthTable {
             for (int column = 0; column < columnCount; column++) {
                 String conditionName = conditionNames[column];
                 ArrayList<Boolean> currentConditionValues = toggledConditions.get(conditionName);
-                Boolean bool = inputMatrice[row][column];
+                Boolean bool = inputMatrix[row][column];
 
                 // Check if current condition already has a test case with current boolean value
                 // If not, test case will be added
@@ -117,8 +110,8 @@ public class TruthTable {
         HashMap<Integer, ArrayList> result = new HashMap<>();
         System.out.println("Test cases for simple condition coverage: ");
         for (Integer index : indicesOfTestCases) {
-            result.put(index, new ArrayList(Arrays.asList(inputMatrice[index])));
-            System.out.println("Index of vector: " + index + ", test case: "+ toBinaryString(inputMatrice[index]) + ", result: "+ toBinaryString(resultArray[index]));
+            result.put(index, new ArrayList(Arrays.asList(inputMatrix[index])));
+            System.out.println("Index of vector: " + index + ", test case: "+ toBinaryString(inputMatrix[index]) + ", result: "+ toBinaryString(resultArray[index]));
         }
         System.out.println("Decision coverage reached? " + decisionCoverageReached(toggledConditionsResult));
 
@@ -127,14 +120,14 @@ public class TruthTable {
 
     public HashMap<Integer, ArrayList> minimalMultipleConditionCoverage() {
         HashMap<Integer, ArrayList> testCases = new HashMap<>();
-        Set<Integer> indicesOfTestCases = new LinkedHashSet<>();
+        Set<Integer> indicesOfTestCases = new TreeSet<>();
 
 
         for (int row = 0; row < rowCount; row++) {
-            boolean[] currentVector = inputMatrice[row];
+            boolean[] currentVector = inputMatrix[row];
 
             for (int rowNeighbour = 0; rowNeighbour < rowCount; rowNeighbour++) {
-                boolean[] potentialNeighbour = inputMatrice[rowNeighbour];
+                boolean[] potentialNeighbour = inputMatrix[rowNeighbour];
 
                 if (areNeighbours(currentVector, potentialNeighbour) && differentResultValues(row, rowNeighbour)) {
                     indicesOfTestCases.add(row);
@@ -145,8 +138,8 @@ public class TruthTable {
 
         System.out.println("Test cases for minimal multiple condition coverage: ");
         for (Integer index : indicesOfTestCases) {
-            testCases.put(index, new ArrayList(Arrays.asList(inputMatrice[index])));
-            System.out.println("Index of vector: " + index + ", test case: "+ toBinaryString(inputMatrice[index]) + ", result: "+ toBinaryString(resultArray[index]));
+            testCases.put(index, new ArrayList(Arrays.asList(inputMatrix[index])));
+            System.out.println("Index of vector: " + index + ", test case: "+ toBinaryString(inputMatrix[index]) + ", result: "+ toBinaryString(resultArray[index]));
         }
 
         return testCases;
@@ -169,8 +162,8 @@ public class TruthTable {
 
     // Getter
 
-    public boolean[][] getInputMatrice() {
-        return inputMatrice;
+    public boolean[][] getinputMatrix() {
+        return inputMatrix;
     }
 
     public boolean[] getResultColumn() {
@@ -186,17 +179,17 @@ public class TruthTable {
     }
 
     public boolean[] getVector(int rowIndex) {
-        return inputMatrice[rowIndex];
+        return inputMatrix[rowIndex];
     }
 
     public boolean getCell(int row, int column) {
-        return inputMatrice[row][column];
+        return inputMatrix[row][column];
     }
 
     // Setter
 
-    public void setInputMatrice(boolean[][] matrice) {
-        inputMatrice = matrice;
+    public void setinputMatrix(boolean[][] matrice) {
+        inputMatrix = matrice;
     }
 
     public void setResultColumn(boolean[] result) {
@@ -208,11 +201,11 @@ public class TruthTable {
     }
 
     public void setVector(int rowIndex, boolean[] vector) {
-        inputMatrice[rowIndex] = vector;
+        inputMatrix[rowIndex] = vector;
     }
 
     public void setCell(int row, int column, boolean value) {
-        inputMatrice[row][column] = value;
+        inputMatrix[row][column] = value;
     }
 
     // Private methods

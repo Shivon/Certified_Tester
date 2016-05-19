@@ -15,11 +15,10 @@ public class Main {
         String numberOfRows = console.readLine("Enter the number of vectors your table will have (rows): ");
         int rows = Integer.parseInt(numberOfRows);
         TruthTable truthTable = new TruthTable(rows, columns, console);
-        truthTable.fillTable();
+        truthTable.fillTableViaConsole();
         System.out.println("\n");
 //        truthTable.printTable();
 //        System.out.println("\n");
-//        TruthTable truthTable = new TruthTable(6, 3, console);
 //        boolean[] test1 = new boolean[] {true, true, true};
 //        boolean[] test2 = new boolean[] {true, true, true};
 //        System.out.println("test1 areNeighbours test2? " + truthTable.areNeighbours(test1, test2));
